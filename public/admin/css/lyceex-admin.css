@@ -1,0 +1,102 @@
+.sidebar-dark .sidebar-brand {
+    color: #005596;
+    background: #fff;
+    height: 50px;
+}
+.sidebar-dark .nav-item .nav-link i {
+    color: #ddd;
+}
+.sidebar-dark .nav-item{
+    border-bottom: 1px solid #2069a3;
+}
+.sidebar-dark .nav-item.active .nav-link{
+    color: #105287;
+    background: #f4f5f8;
+
+}
+.sidebar-dark .nav-item:hover .nav-link{
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+
+}
+.sidebar-dark .nav-item:hover .nav-link i{
+    color: #fff;
+
+}
+.sidebar-dark .nav-item.active .nav-link i {
+    color: #105287;
+}
+.bg-gradient-primary {
+    background-color: #005596;
+    background-image: linear-gradient(180deg, #105287 10%, #105287 100%);
+    background-size: cover;
+}
+.text-primary {
+    color: #105287 !important;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #105287;
+    border-color: #105287;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #105287;
+    border-color: #105287;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #105287;
+    border-color: #105287;
+}
+.sidebar-dark .nav-item .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    padding: 8px 10px ;
+}
+.page-item.disabled .page-link {
+    color: #105287;
+    pointer-events: none;
+    cursor: auto;
+    background-color: #fff;
+    border-color: #105287;
+}
+.table thead th {
+    vertical-align: bottom;
+    color: #105287;
+    text-align: center;
+}
+.topbar {
+    height: 50px;
+    background: #005596;
+}
+#sidebarToggleTop{
+    color: #fff;
+}
+.search-box{
+    display: block;
+}
+.Lyceex-nav .dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #3a3b45;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #efefef;
+}
+.Lyceex-nav .btn-info{
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 0;
+}
+.Lyceex-nav #sidebarToggleTop:hover {
+    background-color: #eaecf4;
+    color: #005596;
+}
+ .rotate-n-15 {
+    padding-top: 9px;
+    padding-left: 35px;
+}
