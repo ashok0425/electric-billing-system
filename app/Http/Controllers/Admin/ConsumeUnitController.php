@@ -25,7 +25,6 @@ class ConsumeUnitController extends Controller
     public function index(Request $request)
     {
         $units=ConsumeUnit::with('user')->orderBy('id','desc')->get();
-        
         if($request->ajax()){
             if(Auth::guard('admin')->user()->type=='franchise'){
 
@@ -39,9 +38,12 @@ class ConsumeUnitController extends Controller
             return Datatables::of($units)
           
             ->addColumn('customer',function($row){
-                return $row->user->name .'<br> Id:'. $row->user->costumer_id.'<br>Meter no: '. $row->user->meter_id;
+                return $row->user->meter_id;
             })
+->addColumn('fine',function($row){
+return __fine($row->created_at,today(),$row->price);
 
+})
             ->addColumn('month',function($row){
                 $html= __getNepaliDate($row->from);
                 $html.='<br> -';
@@ -94,12 +96,14 @@ return view('admin.consume_unit.index');
      */
     public function create()
     {
-        if (Auth::guard('admin')->user()->type=='admin')
+        if (Auth::guard('admin')->user()->type=='franchise')
         {
-            $users=User::all();
+            $users=User::where('franchise_id',Auth::guard('admin')->user()->id)->get();
+
 
         }else{
-            $users=User::where('franchise_id',Auth::guard('admin')->user()->id)->get();
+            $users=User::all();
+
         }
 
         return view('admin.consume_unit.create',compact('users'));
@@ -126,10 +130,16 @@ return view('admin.consume_unit.index');
         try {
         $this->ConsumeUnitService->CreateOrUpdate($request);
            
+
             $notification=[
                 'alert-type'=>'success',
                  'messege'=>'Created successfully'
             ];
+            if($request->print==1){
+                return redirect()->route('admin.consume_units.print',['id'=>$request->user])->with($notification);
+
+            }
+
         } catch (\Throwable $th) {
             $notification=[
                 'alert-type'=>'error',
@@ -232,5 +242,19 @@ return response($last_reading->current_total_unit);
 
     }
 
+}
+
+public function print($id){
+    $units=ConsumeUnit::where('user_id',$id)->where('status',0)->get();
+    $current=ConsumeUnit::where('user_id',$id)->latest()->first();
+
+    $fine=0;
+    $price=0;
+       foreach($units as $value){
+        $fine+=__fine($value->created_at,today(),$value->price);
+        $price+=$value->price;
+
+       }
+return view('invoice.meter_reaading',compact('price','fine','current'));
 }
 }

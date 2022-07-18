@@ -12,8 +12,10 @@
 <table class="table table-striped text-center" id="unit_table">
     <thead>
         <tr>
-            <th>Customer</th>
-            <th>Amount</th>
+            <th>Meter Id</th>
+            <th>Acutal Amount</th>
+            <th>Fine Amount</th>
+            <th>Total Amount</th>
             <th>Paid on</th>
             <th>Remark</th>
 
@@ -42,6 +44,8 @@ $(document).ready(function() {
         columns: [
             { data: 'customer', name: 'customer' },
             { data: 'amount', name: 'amount' },
+            { data: 'fine', name: 'fine' },
+            { data: 'total', name: 'total' },
             { data: 'month', name: 'month' },
             { data: 'remarks', name: 'remarks' },
 

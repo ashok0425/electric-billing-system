@@ -4,15 +4,15 @@
 <div class="container">
     <div class="card">
         <div class="card-header d-flex  justify-content-between">
-          <h6 class="card-title text-primary my-1 font-weight-bold">Charge per unit Data List</h6>
-          <a href="{{route('admin.consume_units.create')}}" class=" my-1 btn btn-primary"><i class="fa fa-plus"></i> Add new</a>
+          <h6 class="card-title text-primary my-1 font-weight-bold">List of Meter Reading</h6>
+          <a href="{{route('admin.consume_units.create')}}" class=" my-1 btn btn-primary"><i class="fa fa-plus"></i> Add New Reading</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
 <table class="table table-striped text-center" id="unit_table">
     <thead>
         <tr>
-            <th>Customer</th>
+            <th>Meter Id</th>
             <th>Month</th>
             <th>Last Reading</th>
             <th>Current Reading</th>

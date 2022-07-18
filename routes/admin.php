@@ -24,8 +24,11 @@ Route::middleware('guest:admin')->group(function(){
 });
 
 Route::middleware('auth:admin')->group(function(){
+    Route::post('excel','UserDetailController@excelupload')->name('excel');
 
     Route::get('dashboard','AuthController@dashboard')->name('dashboard');
+    Route::get('logout','AuthController@logout')->name('logout');
+
     Route::get('profile','AuthController@profile')->name('profile');
 
     Route::get('dashboard','AuthController@dashboard')->name('dashboard');
@@ -54,6 +57,8 @@ Route::middleware('auth:admin')->group(function(){
     Route::Resource('consume_units','ConsumeUnitController');
     Route::get('consume_units/delete/{id}','ConsumeUnitController@destroy')->name('consume_units.delete');
     Route::get('load-last-meter','ConsumeUnitController@loadlastmeter');
+    Route::get('print/{id}','ConsumeUnitController@print')->name('consume_units.print');
+
 
 
     Route::get('cms','CmsController@edit')->name('cms.edit');
@@ -70,6 +75,7 @@ Route::middleware('auth:admin')->group(function(){
 
     Route::Resource('accounts','AccountController');
     Route::get('accounts/pay/{id}','AccountController@create')->name('user_details.pay');
+    Route::get('load-total-amount','AccountController@loadAmount');
 
     Route::Resource('transfer_meters','TransferMeterController');
     Route::get('transfer_meters/transfer/{id}','TransferMeterController@create')->name('transfer_meters.transfer');

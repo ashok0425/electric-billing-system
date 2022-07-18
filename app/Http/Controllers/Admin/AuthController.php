@@ -94,8 +94,8 @@ public function loginStore(Request $request){
          }
 
          public function logout(){
-            session()->forget('user');
-            return redirect('/');
+          Auth::logout();
+          return redirect()->route('admin.login');
          }
 
          public function setup(){

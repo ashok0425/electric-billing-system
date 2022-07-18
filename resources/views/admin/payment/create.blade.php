@@ -24,8 +24,8 @@
 <div class="row">
     
     <div class="from-group my-2 col-md-6 col-md-6">
-        <label>select customer</label>
-       <select name="user" id="" required class="form-control select2">
+        <label>select Meter ID</label>
+       <select name="user" id="user" required class="form-control select2">
 
         <option value="">--select user--</option>
 
@@ -34,7 +34,7 @@
             @if (isset($id)&&$id!=null && $id=$user->id)
                 selected
             @endif
-            >{{$user->name}},Meter_id: {{$user->meter_id}}</option>
+            > {{$user->meter_id}}</option>
             
         @endforeach
        </select>
@@ -45,11 +45,15 @@
 
     <div class="from-group my-2 col-md-6 col-md-6">
         <label>Amount </label>
-        <input type="number" name="amount" id="" class="form-control" required autocomplete="off" min="1">
+        <input type="text" name="amount" id="amount"    class="form-control" required autocomplete="off" min="1" readonly>
     </div>
 
+    <div class="from-group my-2 col-md-6 col-md-6">
+        <label>Fine</label>
+        <input type="text" name="fine" id="fine"  class="form-control" required autocomplete="off" readonly>
+    </div>
 
-    <div class="from-group my-2 col-12">
+    <div class="from-group my-2 col-md-6">
         <label>Remarks </label>
        <input type="text" name="remark" id="" class="form-control">
 
@@ -64,3 +68,24 @@
     </div></div>
     
 @endsection
+
+
+
+@push('scripts')
+<script>
+    $('#user').on('change',function(){
+        let id=$(this).val();
+        $.ajax({
+            url:'{{url('admin/load-total-amount')}}',
+            data:{id:id},
+            type:'GET',
+            success:function(res){
+             $('#amount').val(res.price);
+             $('#fine').val(res.fine);
+
+
+            }
+        })
+    })
+</script>
+@endpush

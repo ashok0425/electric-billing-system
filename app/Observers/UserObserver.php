@@ -5,6 +5,9 @@ namespace App\Observers;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Str;
+use App\Models\UserDetail;
+
+
 class UserObserver
 {
     /**
@@ -15,6 +18,12 @@ class UserObserver
      */
     public function created(User $user)
     {
+        $user_detail=new UserDetail;
+        $user_detail->user_id=$user->id;
+        $user_detail->state_id=1;
+        $user_detail->district_id=1;
+        $user_detail->save();
+
     }
     
     public function creating($request)

@@ -11,7 +11,8 @@ use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\services\UserService;
 use Illuminate\Support\Facades\Auth;
-
+use App\Imports\UsersImport;
+use Maatwebsite\Excel\Facades\Excel;
 class UserDetailController extends Controller
 {
 public $UserService;
@@ -19,6 +20,17 @@ public $UserService;
     {
         $this->UserService=$UserService;
     }
+
+
+// upload via excel 
+
+ public function excelupload(Request $request)
+{
+    Excel::import(new UsersImport, $request->file('file'));
+        dd('user');
+    return redirect('/')->with('success', 'All good!');
+}
+
 
     /**
      * Display a listing of the resource.
@@ -220,7 +232,7 @@ public $UserService;
     public function meterList(Request $request)
     {
       
-        if($request->ajax()){
+        if($request->ajax()){  
             if(Auth::guard('admin')->user()->type=='franchise'){
 
             $users=User::orderBy('id','desc')->where('franchise_id',Auth::guard('admin')->user()->id)->get();
@@ -232,7 +244,7 @@ public $UserService;
             ->editColumn('created_at','{{__getNepaliDate($created_at,1)}}')
             ->editColumn('transfer_to',function($row){
                 if($row->user){
-                    $html='Customer ID'.$row->user->costumer_id;
+                    $html=$row->user->name.'<br> C_No: '.$row->user->costumer_id;
                    $html.='<br><a href="'.route('admin.user_details.show',$row->detail->id).'" class="btn btn-primary"><i class="fas fa-eye"></i></a>';
                    return $html;
                 }
@@ -249,7 +261,7 @@ public $UserService;
             })
 
             ->addColumn('customer',function($row){
-                $html='Customer ID: '.$row->costumer_id;
+                $html=$row->name.'<br> C_No: '.$row->costumer_id;
 
                 $html.='<br> <a href="'.route('admin.user_details.show',$row->detail->id).'" class="btn btn-primary"><i class="fas fa-eye"></i></a>';
                 return $html;
@@ -258,6 +270,7 @@ public $UserService;
             ->addColumn('action',function($row){
 
                 $html=' <a href="'.route('admin.transfer_meters.transfer',$row->id).'" class="btn btn-primary"><i class="fas fa-exchange-alt"></i></a>';
+                $html.=' <a href="'.route('admin.consume_units.print',$row->id).'" class="btn btn-primary"><i class="fas fa-print"></i></a>';
                 return $html;
             }
             )

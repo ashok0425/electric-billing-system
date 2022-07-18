@@ -73,7 +73,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(User::class,'transfer_to','id');
     }
-    
+ 
 }
 
 

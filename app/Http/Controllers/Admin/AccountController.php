@@ -32,7 +32,7 @@ class AccountController extends Controller
             return DataTables::of($units)
           
             ->addColumn('customer',function($row){
-                return $row->user->name .'<br>Customer Id:'. $row->user->costumer_id.'<br>Meter no: '. $row->user->meter_id;
+                return  $row->user->meter_id;
             })
 
             ->addColumn('month',function($row){
@@ -40,6 +40,13 @@ class AccountController extends Controller
               
                 return $html;
             })
+
+            ->addColumn('total',function($row){
+                $html= $row->fine+$row->price;
+              
+                return $html;
+            })
+
 
             ->rawColumns(['customer','month','action','status'])
             ->make(true);
@@ -88,13 +95,11 @@ return view('admin.payment.index');
             DB::beginTransaction();
            $account=new Account;
            $account->amount=$request->amount;
+           $account->fine=$request->fine;
            $account->user_id=$request->user;
            $account->remarks=$request->remark;
            $account->save();
-        //    $meter_reading=ConsumeUnit::where('user_id',$user)->where('status',0)->first();
-        //    if ($meter_reading->price<=) {
-        //     # code...
-        //    }
+           ConsumeUnit::where('user_id',$request->user)->where('status',0)->update(['status'=>1]);
            DB::commit();
 
             $notification=[
@@ -156,4 +161,24 @@ return view('admin.payment.index');
     {
         //
     }
+
+    public function loadAmount(Request $request){
+        $units=ConsumeUnit::where('user_id',$request->id)->where('status',0)->get();
+        $fine=0;
+        $price=0;
+           foreach($units as $value){
+            $fine+=__fine($value->created_at,today(),$value->price);
+            $price+=$value->price;
+
+           }
+
+$data=[
+    'fine'=>$fine,
+    'price'=>$price,
+];
+
+return response($data);
+    }
+
+    
 }
