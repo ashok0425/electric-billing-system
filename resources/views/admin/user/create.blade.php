@@ -16,11 +16,11 @@
                 </ul>
             </div>
         @endif
-        <form action="{{route('admin.excel')}}" enctype="multipart/form-data" method="POST">
+        {{-- <form action="{{route('admin.excel')}}" enctype="multipart/form-data" method="POST">
             @csrf
             <input type="file" name="file">
             <button type="submit">save</button>
-        </form>
+        </form> --}}
                     <form action="{{route('admin.user_details.store')}}" method="POST">
                         @csrf
                      <div class="row">
