@@ -55,6 +55,26 @@
                   <img src="{{ asset($cms->logo) }}" width="70" alt="">
             </div>
             </div>
+
+
+
+            <div class="col-md-6">
+              <div class="mb-3">
+                  <label class="form-label font-weight-bold">Company Name</label>
+                  <input type="text" name="company_name" class="form-control" placeholder="Company Nmae" value="{{$cms->company_name}}" >
+              </div>
+          </div>
+              <div class="col-md-6">
+  
+              <div class="mb-3">
+                  <label class="form-label font-weight-bold">Logo</label>
+                  <div class="file-upload-wrapper" data-text="Select your file!">
+                      <input name="login_image" type="file" class="file-upload-field form-control" value="">
+                    </div>
+                    <br>
+                    <img src="{{ asset($cms->login_image) }}" width="70" alt="">
+              </div>
+              </div>
          
 
             <div class="col-md-6">

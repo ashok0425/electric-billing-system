@@ -31,10 +31,10 @@
 
         @foreach ($users as $user)
         <option value="{{$user->id}}"
-            @if (isset($id)&&$id!=null && $id=$user->id)
+            @if (isset($id)&&$id!=null && $id==$user->id)
                 selected
             @endif
-            > {{$user->meter_id}}</option>
+            >{{$user->name}}, {{$user->meter_id}}</option>
             
         @endforeach
        </select>
@@ -42,15 +42,14 @@
 
 
 
-
     <div class="from-group my-2 col-md-6 col-md-6">
         <label>Amount </label>
-        <input type="text" name="amount" id="amount"    class="form-control" required autocomplete="off" min="1" readonly>
+        <input type="text" name="amount" id="amount"    class="form-control" required autocomplete="off" min="1" >
     </div>
 
     <div class="from-group my-2 col-md-6 col-md-6">
         <label>Fine</label>
-        <input type="text" name="fine" id="fine"  class="form-control" required autocomplete="off" readonly>
+        <input type="text" name="fine" id="fine"  class="form-control" required autocomplete="off" >
     </div>
 
     <div class="from-group my-2 col-md-6">
@@ -75,6 +74,12 @@
 <script>
     $('#user').on('change',function(){
         let id=$(this).val();
+        getAmount(id);
+    })
+    let id=$('#user').val();
+    getAmount(id);
+
+    function getAmount(id){
         $.ajax({
             url:'{{url('admin/load-total-amount')}}',
             data:{id:id},
@@ -86,6 +91,6 @@
 
             }
         })
-    })
+    }
 </script>
 @endpush

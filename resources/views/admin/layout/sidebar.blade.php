@@ -25,7 +25,7 @@
     <li class="nav-item @if (Request()->segment(2)=='user_details')active @endif">
         <a class="nav-link" href="{{route('admin.user_details.index')}}">
         <i class="fas fa-fw fa-users"></i>
-        <span>Customer</span></a>
+        <span>Consumer</span></a>
     </li>
     @endif
 

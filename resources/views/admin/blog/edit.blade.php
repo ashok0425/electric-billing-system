@@ -4,7 +4,7 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-          <h6 class="card-title text-primary font-weight-bold"> Edit charge per unit</h6>
+          <h6 class="card-title text-primary font-weight-bold"> Edit Blog/Notice</h6>
         </div>
         <div class="card-body">
             @if ($errors->any())
@@ -17,63 +17,35 @@
             </div>
         @endif
 
-        <form action="{{route('admin.consume_units.update',$unit)}}" method="POST">
-            @method('PATCH')
-            @csrf
         
+        <form action="{{route('admin.blogs.update',$blog)}}" method="POST" enctype="multipart/form-data">
+            @csrf
+        @method('PATCH')
 <div class="row">
-    
-    <div class="from-group my-2 col-md-6 col-md-6">
-        <label>select customer</label>
-       <select name="user" id="" required class="form-control select2">
 
-        <option value="">--select user--</option>
-
-        @foreach ($users as $user)
-        <option value="{{$user->id}}" @if ($user->id==$unit->user_id)
-            selected
-        @endif>{{$user->name}}</option>
-            
-        @endforeach
-       </select>
-    </div>
 
 
 
 
     <div class="from-group my-2 col-md-6 col-md-6">
-        <label>Date From </label>
-        <input type="text" name="from" id="" class="form-control datepicker" required value="{{$unit->from}}">
+        <label>Title </label>
+        <input type="text" name="title" class="form-control" required autocomplete="off" required value="{{$blog->title}}">
     </div>
 
 
-    <div class="from-group my-2 col-md-6">
-        <label>Date To </label>
-        <input type="text" name="to" id="" class="form-control datepicker" required value="{{$unit->to}}">
+
+    <div class="from-group my-2 col-md-6 col-md-6">
+        <label>Thumbnail </label>
+        <input type="file" name="thumbnail" id="" class="form-control"  >
+        <img src="{{asset($blog->thumbnail)}}" alt="" width="100" height="100">
     </div>
 
 
-    <div class="from-group my-2 col-md-6">
-        <label>Consume Unit</label>
-        <input type="number" name="unit" id="" class="form-control " required value="{{$unit->unit}}">
-    </div>
-
-    
-
-    <div class="from-group my-2 col-md-6">
-        <label>Status</label>
-       <select name="status" id="" class="form-control" required>
-        <option value="0" @if ($unit->status==0)
-            selected
-        @endif>pendig</option>
-        <option value="1" @if ($unit->status==1)
-            selected
-        @endif>Paid</option>
-        <option value="2" @if ($unit->status==2)
-            
-        @endif>Partial paid</option>
-
-       </select>
+    <div class="from-group my-2 col-12">
+        <label>Remarks </label>
+<textarea name="description" id="summernote1" cols="30" rows="10">
+    {{$blog->description}}
+</textarea>
     </div>
 </div>
 
@@ -85,3 +57,20 @@
     </div></div>
     
 @endsection
+
+@push('scripts')
+<script>
+    $('#transfer_from').on('change',function(){
+        let id=$(this).val();
+        $.ajax({
+            url:'{{url('admin/load-unit')}}',
+            data:{id:id},
+            type:'GET',
+            success:function(res){
+             $('#unit_till_now').val(res.unit);
+
+            }
+        })
+    })
+</script>
+@endpush

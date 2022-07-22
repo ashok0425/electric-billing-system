@@ -34,3 +34,13 @@ if($diff_in_day<=30){
     }
 
 }
+
+
+
+
+function __dueDate($from,$to){
+  $from=\Carbon\Carbon::createFromFormat('Y-m-d H:s:i',$from);
+  $to=\Carbon\Carbon::createFromFormat('Y-m-d H:s:i',$to);
+return $diff_in_day=$to->diffInDays($from).' Days';
+
+}

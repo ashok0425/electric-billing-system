@@ -44,6 +44,15 @@ class ConsumeUnitController extends Controller
 return __fine($row->created_at,today(),$row->price);
 
 })
+
+->addColumn('due',function($row){
+     $data=__dueDate($row->created_at,today()).'<br>';
+        $data.= __getNepaliDate($row->created_at,1);
+        return $data;
+    
+    })
+
+ 
             ->addColumn('month',function($row){
                 $html= __getNepaliDate($row->from);
                 $html.='<br> -';
@@ -82,7 +91,7 @@ return __fine($row->created_at,today(),$row->price);
             //     return $html;
             // }
             // )
-            ->rawColumns(['customer','month','action','status'])
+            ->rawColumns(['customer','month','action','status','due'])
             ->make(true);
 
         }
@@ -254,6 +263,13 @@ public function print($id){
         $fine+=__fine($value->created_at,today(),$value->price);
         $price+=$value->price;
 
+       }
+       if($current==null){
+        $notification=[
+            'alert-type'=>'error',
+             'messege'=>'No Meter reading'
+        ];
+    return redirect()->back()->with($notification);
        }
 return view('invoice.meter_reaading',compact('price','fine','current'));
 }

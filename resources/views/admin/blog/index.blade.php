@@ -4,8 +4,8 @@
 <div class="container">
     <div class="card">
         <div class="card-header d-flex  justify-content-between">
-          <h6 class="card-title text-primary my-1 font-weight-bold">Meter Transfer History</h6>
-          <a href="{{route('admin.transfer_meters.create')}}" class=" my-1 btn btn-primary"><i class="fa fa-plus"></i> Transfer More</a>
+          <h6 class="card-title text-primary my-1 font-weight-bold">Notice/Blog</h6>
+          <a href="{{route('admin.blogs.create')}}" class=" my-1 btn btn-primary"><i class="fa fa-plus"></i> Add new</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -14,10 +14,9 @@
         <tr>
             <th>Title</th>
             <th>Thumbnail</th>
-            <th></th>
-            <th>Meter Reading</th>
-            <th>Amount paid</th>
-            <th>Transferred On</th>
+            <th>Created at</th>
+            <th>Action </th>
+           
 
 
         </tr>
@@ -40,16 +39,13 @@ $(document).ready(function() {
     $('#unit_table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{!! route('admin.transfer_meters.index') !!}',
+        ajax: '{!! route('admin.blogs.index') !!}',
         columns: [
-            { data: 'transfer_from', name: 'transfer_from' },
-            { data: 'transfer_to', name: 'transfer_to' },
-            { data: 'meter_id', name: 'meter_id' },
-            { data: 'total_unit', name: 'total_unit' },
-            { data: 'transfer_amount', name: 'transfer_amount' },
+            { data: 'title', name: 'title' },
+            { data: 'thumbnail', name: 'thumbnail' },
             { data: 'created_at', name: 'created_at' },
-
-
+            { data: 'action', name: 'action' },
+          
       
         ]
     });

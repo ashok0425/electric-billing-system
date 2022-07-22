@@ -64,31 +64,36 @@
     font-family: Arial, Helvetica, sans-serif!important;
     color: #000!important;
   }
+  .text-center{
+    text-align: center!important;
+  }
 </style>
 </head>
 <body>
     
-
+@php
+    $cms=DB::table('cms')->first();
+@endphp
 
 
 <div id="invoice-POS">
-
- 
     <!--End InvoiceTop-->
-  
     <div id="mid">
       <div class="info">
-    
-  
-
-       
-   <div class="header">
+   <div class="header text-center" id="bot">
+    <div class="header-text">
+{{$cms->company_name}}
+<br>
+{{$cms->address1}}
+    </div>
+   </div>
+   <div class="header important" style="margin-top:5px;">
+    Consumer Detail
+    </div>
+   <div class="header" style="margin-top:5px;">
     <div class="header-text">Meter No</div>
     <div class="header-text">{{$current->user->meter_id}}</div>
-   </div>
-
-
-       
+   </div>    
    <div class="header">
     <div class="header-text">Name</div>
     <div class="header-text">{{$current->user->name}}</div>
@@ -110,8 +115,10 @@
   
   
     <div id="bot">
-  
-      <div id="table">
+      <div class="header text-center" style="margin-top:5px;">
+        Meter Reading Detail
+        </div>
+      <div id="table" style="margin-top:5px;">
         <div>
           <div class="tabletitle">
             <span class="item">
@@ -177,6 +184,28 @@
         </div>
       </div>
       
+      <br>
+      <small>
+        नियमहरु:
+        <br>
+१. मिटर जाँच गर्न आउने कर्मचारीलाई जाँच गर्ने मौका तुरुन्त दिनूपर्नेछ ।
+<br>
+
+२. महशुलदाताले प्रत्येक महिनाको शुल्क १५ गते भित्र बुझाउनु पर्नेछ । 
+<br>
+
+३. मिटर रिडिङ्ग गरेको दिनदेखि १५ दिनसम्म कुनै जरिवना लाग्ने छैन्  ।
+<br>
+
+४. मिटर रिडिङ्ग गरेको १६ दिनदेखि ३० दिनसम्म थप १०% जरिवना लाग्ने छ ।
+<br>
+
+५. मिटर रिडिङ्ग गरेको ३० दिनदेखि ५ महिनासम्म थप ५०% जरिवना लाग्ने छ ।
+<br>
+
+६. मिटर रिडिङ्ग गरेको ५  महिनामाथी भएमा थप १००% जरिवना लाग्ने छ ।
+        पानीको महशुल समयमा नै तिरौ आर्थिक भारबाट बचौं
+      </small>
   
     </div>
     <!--End InvoiceBot-->

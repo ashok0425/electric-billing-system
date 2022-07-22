@@ -26,7 +26,7 @@
 {{-- datatables  --}}
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css"/>
-<link href='//cdn.datatables.net/responsive/2.2.9/css/dataTables.responsive.css'  rel="stylesheet" />
+<link href='https://cdn.datatables.net/responsive/2.2.9/css/dataTables.responsive.css'  rel="stylesheet" />
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="{{asset('nepalidate/nepali-date-picker.min.css')}}">
 
@@ -229,7 +229,11 @@ $(document).ready(function() {
    
 
   </script>
-
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+  </script>
 </body>
 
 </html>

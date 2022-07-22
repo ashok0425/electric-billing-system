@@ -19,7 +19,8 @@
             <th>unit</th>
             <th>Price</th>
             <th>Fine</th>
-            
+            <th>Due Date</th>
+
             <th>Status</th>
             {{-- <th>Action</th> --}}
 
@@ -54,7 +55,8 @@ $(document).ready(function() {
             { data: 'unit', name: 'unit' },
             { data: 'price', name: 'price' },
             { data: 'fine', name: 'fine' },
-          
+            { data: 'due', name: 'due' },
+
             { data: 'status', name: 'status' },
 
             // { data: 'action', name: 'action' },

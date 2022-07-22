@@ -44,7 +44,7 @@ class BlogController extends Controller
             ->make(true);
 
         }
-return view('admin.blogs.index');
+return view('admin.blog.index');
     }
 
     /**
@@ -70,17 +70,17 @@ return view('admin.blogs.index');
             'title'=>'required',
              ]);
 
-        // try {
+        try {
            $blog=new Blog;
            $blog->title=$request->title;
            $blog->description=$request->description;
            $blog->slug=Str::slug($request->title);
-           $blog->type=$request->type;
-           $file=$request->file('thumbnai');
+           $blog->type=1;
+           $file=$request->file('thumbnail');
            
            if($file){
                $fname=rand().'blog.'.$file->getClientOriginalExtension();
-               $blog->thumbnai='upload/blog/'.$fname;
+               $blog->thumbnail='upload/blog/'.$fname;
                $file->move(public_path().'/upload/blog/',$fname);
            }
            $blog->save();
@@ -90,12 +90,12 @@ return view('admin.blogs.index');
                 'alert-type'=>'success',
                  'messege'=>'Created successfully'
             ];
-        // } catch (\Throwable $th) {
-        //     $notification=[
-        //         'alert-type'=>'error',
-        //          'messege'=>'Something went wrong.Please try again later'
-        //     ];
-        // }
+        } catch (\Throwable $th) {
+            $notification=[
+                'alert-type'=>'error',
+                 'messege'=>'Something went wrong.Please try again later'
+            ];
+        }
         return redirect()->back()->with($notification);
    
     }
@@ -107,7 +107,7 @@ return view('admin.blogs.index');
      * @param  \App\Models\Account  $account
      * @return \Illuminate\Http\Response
      */
-    public function show(Account $account)
+    public function show(Blog $blog)
     {
         //
     }
@@ -118,9 +118,9 @@ return view('admin.blogs.index');
      * @param  \App\Models\Account  $account
      * @return \Illuminate\Http\Response
      */
-    public function edit(Account $account)
+    public function edit(Blog $blog)
     {
-        //
+        return view('admin.blog.edit',compact('blog'));
     }
 
     /**
@@ -141,13 +141,12 @@ return view('admin.blogs.index');
            $blog->title=$request->title;
            $blog->description=$request->description;
            $blog->slug=Str::slug($request->title);
-           $blog->type=$request->type;
-           $file=$request->file('thumbnai');
-           
+           $blog->type=1;
+           $file=$request->file('thumbnail');
            if($file){
                File::delete($blog->thumbnail);
                $fname=rand().'blog.'.$file->getClientOriginalExtension();
-               $blog->thumbnai='upload/blog/'.$fname;
+               $blog->thumbnail='upload/blog/'.$fname;
                $file->move(public_path().'/upload/blog/',$fname);
            }
            $blog->save();

@@ -26,6 +26,7 @@ class CmsController extends Controller
             $web->meta_title=$request->title;
             $web->keyword=$request->keyword;
             $web->meta_description=$request->descr;
+            $web->company_name=$request->company_name;
             $web->email1=$request->email1;
             $web->email2=$request->email2;
             $web->phone1=$request->phone1;
@@ -55,6 +56,18 @@ class CmsController extends Controller
                 $web->logo='upload/setting/logo/'.$fname;
                 $file->move(public_path().'/upload/setting/logo/',$fname);
                     }
+
+
+                    $login_image=$request->file('login_image');
+
+            if($login_image){
+                File::delete(public_path($web->login_image));
+                $fname=rand().'seeting.'.$login_image->getClientOriginalExtension();
+                $web->login_image='upload/setting/login_image/'.$fname;
+                $login_image->move(public_path().'/upload/setting/login_image/',$fname);
+                    }
+
+
 
                     $fev=$request->file('fev');
             if($fev){

@@ -17,18 +17,30 @@ class AccountController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request,$id=null)
     {
         
         if($request->ajax()){
             if(Auth::guard('admin')->user()->type=='franchise'){
+                if($id!=null){
+                    $units=Account::whereHas('user',function($q){
+                        $q->where('franchise_id','=',Auth::guard('admin')->user()->id);
+                    })->orderBy('id','desc')->where('user_id',$id)->get();
+                }else{
                 $units=Account::whereHas('user',function($q){
                     $q->where('franchise_id','=',Auth::guard('admin')->user()->id);
                 })->orderBy('id','desc')->get();
+            }
+            }else{
+                if($id!=null){
+
+                $units=Account::with('user')->where('user_id',$id)->orderBy('id','desc')->get();
             }else{
                 $units=Account::with('user')->orderBy('id','desc')->get();
-
+                
             }
+
+        }
             return DataTables::of($units)
           
             ->addColumn('customer',function($row){
@@ -69,7 +81,6 @@ return view('admin.payment.index');
         }else{
             $users=User::where('franchise_id',Auth::guard('admin')->user()->id)->get();
         }
-
 
         return view('admin.payment.create',compact('users','id'));
 
