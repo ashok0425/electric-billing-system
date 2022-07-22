@@ -69,6 +69,11 @@
   .text-center{
     text-align: center!important;
   }
+  @media print{
+    .print{
+      display: none;
+    }
+  }
 </style>
 </head>
 <body>
@@ -77,6 +82,9 @@
     $cms=DB::table('cms')->first();
 @endphp
 
+<div class="print text-center" style="background: red;color:white;padding:5px 10px;border-radius:10px;width:150px;cursor:pointer;margin:auto" onclick="print()">
+  print
+</div>
 
 <div id="invoice-POS">
     <!--End InvoiceTop-->
