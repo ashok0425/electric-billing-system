@@ -3,9 +3,14 @@
 
 <div class="container">
     <div class="card">
-        <div class="card-header d-flex  justify-content-between">
+        <div class="card-header row">
+            <div class="col-md-3">
+
           <h6 class="card-title text-primary my-1 font-weight-bold">List of Meter Reading</h6>
+            </div>
+          <div class="col-md-3">
           <a href="{{route('admin.consume_units.create')}}" class=" my-1 btn btn-primary"><i class="fa fa-plus"></i> Add New Reading</a>
+          </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">

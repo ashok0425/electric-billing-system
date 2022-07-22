@@ -61,13 +61,13 @@
             <div class="col-md-6">
               <div class="mb-3">
                   <label class="form-label font-weight-bold">Company Name</label>
-                  <input type="text" name="company_name" class="form-control" placeholder="Company Nmae" value="{{$cms->company_name}}" >
+                  <input type="text" name="company_name" class="form-control" placeholder="Company Name" value="{{$cms->company_name}}" >
               </div>
           </div>
               <div class="col-md-6">
   
               <div class="mb-3">
-                  <label class="form-label font-weight-bold">Logo</label>
+                  <label class="form-label font-weight-bold">Login Page Image</label>
                   <div class="file-upload-wrapper" data-text="Select your file!">
                       <input name="login_image" type="file" class="file-upload-field form-control" value="">
                     </div>

@@ -33,6 +33,17 @@
     @stack('links')
 
     <style>
+        
+@media only screen and (max-width: 600px){
+  .sidebar{
+    display: none;
+
+  }
+        .sidebar.toggled{
+          display:block!important;
+width: 100px!important;
+        }
+      }
       .form-group{
         margin: 10px 0;
       }

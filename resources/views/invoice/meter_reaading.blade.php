@@ -7,7 +7,9 @@
     <title>invoice</title>
 
 <style>
- 
+ small{
+  font-size: 10px!important;
+ }
 #invoice-POS {
 	box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
 	padding: 2mm;
@@ -82,13 +84,19 @@
       <div class="info">
    <div class="header text-center" id="bot">
     <div class="header-text">
-{{$cms->company_name}}
+      <span  style="font-weight: 600!important">
+        {{$cms->company_name}}
+        </span>
 <br>
 {{$cms->address1}}
     </div>
    </div>
-   <div class="header important" style="margin-top:5px;">
-    Consumer Detail
+   <div class="header important" style="margin-top:5px;font-weight: 600!important;">
+    
+    <span style="border-bottom: 1px solid #EEE">
+      Consumer Details
+      <br>
+    </span>
     </div>
    <div class="header" style="margin-top:5px;">
     <div class="header-text">Meter No</div>
@@ -100,7 +108,7 @@
    </div>
 
    <div class="header">
-    <div class="header-text">Customer Number</div>
+    <div class="header-text">Consumer Number</div>
     <div class="header-text">{{$current->user->costumer_id}}</div>
    </div>
        
@@ -115,8 +123,10 @@
   
   
     <div id="bot">
-      <div class="header text-center" style="margin-top:5px;">
-        Meter Reading Detail
+      <div class="header text-center" style="margin-top:5px;font-weight: 600!important">
+    <span style="border-bottom: 1px solid #EEE">
+        Meter Reading Details
+    </span>
         </div>
       <div id="table" style="margin-top:5px;">
         <div>
@@ -148,7 +158,7 @@
 
               </span>
           </div>
-
+{{-- 
           <div class="tabletitle">
             <span class="item">
                Previous Due
@@ -168,16 +178,16 @@
                Fine
             </span>
             <span class="item">
-               {{$fine}}
+               {{number_format($fine,2)}}
               </span>
-          </div>
+          </div> --}}
 
-          <div class="tabletitle">
-            <span class="item">
-               Total 
+          <div class="tabletitle" style="border-top:1px solid #EEE;border-bottom:1px solid #EEE;padding:3px 0;margin-top:2px">
+            <span class="item " style="font-weight: 600!important">
+               Total  Amount
             </span>
-            <span class="item">
-              {{$price+$fine}}
+            <span class="item" style="font-weight: 600!important">
+              {{number_format($price+$fine,2)}}
               </span>
           </div>
   
@@ -186,7 +196,9 @@
       
       <br>
       <small>
-        नियमहरु:
+        <span style="font-weight: 600!important;border-bottom:solid 1px #EEE">
+          नियमहरु:
+        </span>
         <br>
 १. मिटर जाँच गर्न आउने कर्मचारीलाई जाँच गर्ने मौका तुरुन्त दिनूपर्नेछ ।
 <br>
@@ -204,7 +216,13 @@
 <br>
 
 ६. मिटर रिडिङ्ग गरेको ५  महिनामाथी भएमा थप १००% जरिवना लाग्ने छ ।
-        पानीको महशुल समयमा नै तिरौ आर्थिक भारबाट बचौं
+<br>
+<p style="font-weight:600;text-align:center!important">
+  पानीको महशुल समयमा नै तिरौ आर्थिक भारबाट
+  
+  बचौं
+
+</p>
       </small>
   
     </div>
