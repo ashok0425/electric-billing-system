@@ -230,15 +230,6 @@
   </div>
   <!--End Invoice-->
 
-<script>
-    window.print();
 
-
-        var afterPrint = function () {
-          location.href='{{route('admin.consume_units.create')}}'
-
-        };
-        window.onafterprint = afterPrint;
-</script>
 </body>
 </html>
