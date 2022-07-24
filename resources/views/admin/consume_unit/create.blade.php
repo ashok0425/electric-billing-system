@@ -4,7 +4,7 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-          <h6 class="card-title text-primary font-weight-bold"> Add charge per unit</h6>
+          <h6 class="card-title text-primary font-weight-bold"> Add New Reading</h6>
         </div>
         <div class="card-body">
             @if ($errors->any())
@@ -53,7 +53,7 @@
 
     <div class="from-group my-2 col-md-6">
         <label>Last Meter reading</label>
-        <input type="number" name="last_meter_reading" id="last_meter_reading" class="form-control" required >
+        <input type="number" name="last_meter_reading" id="last_meter_reading" class="form-control" required readonly>
     </div>
 
     <div class="from-group my-2 col-md-6">
@@ -81,7 +81,7 @@
 
 @push('scripts')
 <script>
-    $('#user').on('change',function(){
+    $(document).on('change','#user',function(){
         let id=$(this).val();
 if(id!=''){
     $.ajax({

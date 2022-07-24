@@ -23,6 +23,11 @@ Route::post('login','AuthController@loginStore')->name('login');
 
 Route::middleware('auth')->group(function(){
 Route::get('dashboard','AuthController@dashboard')->name('dashboard');
+Route::get('accounts','PaymentController@account')->name('accounts');
+Route::get('consume_units','PaymentController@Consumeunit')->name('consume_units');
+Route::get('make/payment','PaymentController@makePayment')->name('make.payment');
+
+
 
 });
 
@@ -36,6 +41,10 @@ Route::get('blog/detail/{id}','HomeController@blogDetail')->name('blog.detail');
 Route::get('about-us','HomeController@about')->name('about');
 Route::get('privacy-policy','HomeController@privacy')->name('privacy');
 Route::get('term','HomeController@term')->name('term');
+Route::get('invoice',function(){
+    return view('invoice.invoice');
+});
+
 
 
 

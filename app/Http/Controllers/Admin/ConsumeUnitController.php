@@ -243,7 +243,7 @@ return view('admin.consume_unit.index');
     }
 
 public function loadlastmeter(Request $request){
-    $last_reading=  ConsumeUnit::orderBy('id','desc')->latest()->first();
+    $last_reading=  ConsumeUnit::where('user_id',$request->id)->orderBy('id','desc')->latest()->first();
     if($last_reading){
 return response($last_reading->current_total_unit);
     }else{

@@ -44,12 +44,12 @@
 
     <div class="from-group my-2 col-md-6 col-md-6">
         <label>Amount </label>
-        <input type="text" name="amount" id="amount"    class="form-control" required autocomplete="off" min="1" >
+        <input type="text" name="amount" id="amount"  readonly  class="form-control" required autocomplete="off" min="1" >
     </div>
 
     <div class="from-group my-2 col-md-6 col-md-6">
         <label>Fine</label>
-        <input type="text" name="fine" id="fine"  class="form-control" required autocomplete="off" >
+        <input type="text" name="fine" id="fine" readonly class="form-control" required autocomplete="off" >
     </div>
 
     <div class="from-group my-2 col-md-6">

@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
-use Illuminate\Http\Request;
-use App\Models\Contact;
+use App\Models\Cms;
 
 class HomeController extends Controller
 {
@@ -17,7 +16,10 @@ class HomeController extends Controller
       return view('frontend.blog.index',compact('blogs'));
  }
 
-
+ public function about(){
+  $about=Cms::first();
+   return view('frontend.about',compact('about'));
+}
  
  public function blogDetail($id){
      $blog=Blog::find($id);

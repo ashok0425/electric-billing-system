@@ -101,6 +101,15 @@ return view('admin.payment.index');
 
 
         ]);
+        $units=ConsumeUnit::where('user_id',$request->user)->where('status',0)->get();
+        $fine=0;
+        $price=0;
+        $cid=[];
+           foreach($units as $value){
+            $fine+=__fine($value->created_at,today(),$value->price);
+            $price+=$value->price;
+            $cid[]=$value->id;
+           }
 
         // try {
             DB::beginTransaction();
@@ -110,6 +119,7 @@ return view('admin.payment.index');
            $account->user_id=$request->user;
            $account->remarks=$request->remark;
            $account->save();
+           session()->put('consume_id',$cid);
            ConsumeUnit::where('user_id',$request->user)->where('status',0)->update(['status'=>1]);
            DB::commit();
 
@@ -117,6 +127,11 @@ return view('admin.payment.index');
                 'alert-type'=>'success',
                  'messege'=>'Created successfully'
             ];
+            $id=$request->user;
+            if (count($cid)>0) {
+                return view('invoice.invoice',compact('id'));
+
+            }
         // } catch (\Throwable $th) {
         //     $notification=[
         //         'alert-type'=>'error',

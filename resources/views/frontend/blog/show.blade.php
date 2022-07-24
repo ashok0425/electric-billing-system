@@ -30,7 +30,10 @@
                 </h3>
                 @foreach ($blogs as $item)
                 <p class="border-bottom py-1">
-                 {{$loop->iteration}}) &nbsp;   {{$item->title}}
+                <a href="{{route('blog.detail',['id'=>$item->id])}}" class="text-dark">
+
+                    {{$loop->iteration}}) &nbsp;   {{$item->title}}
+                </a>
 
                 </p>
                 @endforeach

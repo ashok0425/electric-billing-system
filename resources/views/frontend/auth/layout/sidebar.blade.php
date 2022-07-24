@@ -13,14 +13,14 @@
     <hr class="sidebar-divider my-0">
     <!-- Nav Item - Dashboard -->
     <li class="nav-item @if (Request()->segment(1)=='dashboard')  active @endif">
-        <a class="nav-link" href="{{route('admin.dashboard')}}" >
+        <a class="nav-link" href="{{route('dashboard')}}" >
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
     </li>
 
 
-    <li class="nav-item  @if (Request()->segment(2)=='consume_units')  active @endif    ">
-        <a class="nav-link" href="{{route('admin.consume_units.index')}}">
+    <li class="nav-item  @if (Request()->segment(1)=='consume_units')  active @endif    ">
+        <a class="nav-link" href="{{route('consume_units')}}">
         <i class="fas fa-fw fa-paper-plane"></i>
         <span>Meter Reading</span></a>
     </li>
@@ -28,14 +28,18 @@
  
  
 
-@if (Auth::guard('admin')->user()->type=='admin'||Auth::guard('admin')->user()->type=='franchise')
-    <li class="nav-item @if (Request()->segment(2)=='accounts') active @endif    ">
-        <a class="nav-link" href="{{route('admin.accounts.index')}}">
+    <li class="nav-item @if (Request()->segment(1)=='accounts') active @endif    ">
+        <a class="nav-link" href="{{route('accounts')}}">
         <i class="fas fa-fw fa-wallet"></i>
         <span>Payments </span></a>
     </li>
-@endif
    
+    
+    <li class="nav-item @if (Request()->segment(1)=='make') active @endif    ">
+        <a class="nav-link" href="{{route('make.payment')}}">
+        <i class="fas fa-fw fa-dollar"></i>
+        <span>Pay Now </span></a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
