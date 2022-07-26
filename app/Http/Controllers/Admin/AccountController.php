@@ -47,19 +47,22 @@ class AccountController extends Controller
                 return  $row->user->meter_id;
             })
 
+            ->addColumn('action',function($row){
+                $html=' <a href="'.route('admin.accounts.invoice',$row->id).'" class="btn btn-primary">print</a>';
+                return $html;
+            })
+      
+            ->addColumn('total',function($row){
+                $html= $row->fine+$row->amount;
+              
+                return $html;
+            })
+
             ->addColumn('month',function($row){
                 $html= __getNepaliDate($row->created_at,1);
               
                 return $html;
             })
-
-            ->addColumn('total',function($row){
-                $html= $row->fine+$row->price;
-              
-                return $html;
-            })
-
-
             ->rawColumns(['customer','month','action','status'])
             ->make(true);
 
@@ -206,5 +209,11 @@ $data=[
 return response($data);
     }
 
+
+    public function print($id){
+
+            return view('invoice.account_invoice',compact('id'));
+
+    }
     
 }

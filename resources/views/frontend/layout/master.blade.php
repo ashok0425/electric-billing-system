@@ -80,6 +80,32 @@
         .logo {
             width: 190px;
         }
+        .banner{
+            position: relative;
+        }
+      
+        .owl-carousel .owl-nav button.owl-next{
+            left: 93%!important;
+            position: absolute;
+            top: 50%
+
+        }
+
+        .owl-carousel .owl-nav button.owl-prev{
+            left: .5%!important;
+            position: absolute;
+            top: 50%
+
+        }
+        .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot{
+          font-size: 30px;
+          color: #fff;
+          background: rgba(255, 251, 250, .5);
+          height: 40px;
+          width: 40px;
+          border-radius: 50%;
+
+        }
     </style>
 </head>
 
@@ -119,6 +145,29 @@
                     break;
             }
         @endif
+
+
+
+        $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    responsiveClass:true,
+    nav:true,
+   loop:true,
+navText:['⬅','➡'],
+    responsive:{
+        0:{
+            items:1,
+        },
+        600:{
+            items:3,
+        },
+        1000:{
+            items:1,
+          
+        }
+    }
+})
     </script>
 
 

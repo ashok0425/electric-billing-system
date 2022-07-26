@@ -29,22 +29,15 @@
             ⬅ Back
           </a>
         @php
-        use App\Models\ConsumeUnit;
+        use App\Models\Account;
         use App\Models\User;
 
         // $id=$id;
             $cms=DB::table('cms')->first();
-          
-            $user=User::find($id);
+            $reading=Account::where('id',$id)->first();
+            $user=User::find($reading->user_id);
 
-              $reading=ConsumeUnit::whereIn('id',session()->get('consume_id'))->get();
-                $fine=0;
-                $price=0;
-                   foreach($reading as $value){
-                    $fine+=__fine($value->created_at,today(),$value->price);
-                    $price+=$value->price;
-        
-                   }
+           
                    @endphp
         <table width="100%" cellpadding="0" cellspacing="0" border="0" class="backgroundTable main-temp" style="background-color: #d5d5d5;">
             <tbody>
@@ -75,7 +68,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td style="font-size: 14px; line-height: 18px; color: #666666; padding-bottom: 25px;">
-                                                        <strong>Invoice Date:</strong> {{__getNepaliDate(today(),1)}} 
+                                                        <strong>Invoice Date:</strong> {{__getNepaliDate($reading->created_at,1)}} 
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -120,53 +113,6 @@
                                 </tr>
                                 <!-- End address Section -->
                                 
-                                <!-- Start product Section -->
-                                @foreach ($reading as $item)
-                                <tr>
-                                    <td style="padding-top: 0;">
-                                        <table width="560" align="center" cellpadding="0" cellspacing="0" border="0" class="devicewidthinner" style="border-bottom: 1px solid #eeeeee;">
-                                            <tbody>
-                                                <tr>
-                                                    <td style="font-size: 14px; line-height: 18px; color: #757575; width: 440px;">
-                                                         Date: {{__getNepaliDate($item->created_at,1)}}
-                                                    </td>
-                                                    <td style="width: 130px;"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="font-size: 14px; line-height: 18px; color: #757575; width: 440px;">
-                                                        Last Reading: {{$item->last_meter_reading}}
-                                                    </td>
-                                                    <td style="width: 130px;"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="font-size: 14px; line-height: 18px; color: #757575;">
-                                                        Current Reading: {{$item->current_total_unit}}
-
-                                                    </td>
-                                                    <td style="font-size: 14px; line-height: 18px; color: #757575; text-align: right;">
-                                                        @php
-               $fine= __fine($item->created_at,today(),$item->price)
-                                                        @endphp
-                                                        Fine: {{$fine}}
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="font-size: 14px; line-height: 18px; color: #757575; padding-bottom: 10px;">
-                                                       Consume  Unit: {{$item->unit}}
-                                                    </td>
-                                                    <td style="font-size: 14px; line-height: 18px; color: #757575; text-align: right; padding-bottom: 10px;">
-                                                        <b style="color: #666666;">Total:{{$item->price}}</b> 
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                                @endforeach
-                                
-                               
-                                <!-- End product Section -->
-                                
                                 <!-- Start calculation Section -->
                                 <tr>
                                     <td style="padding-top: 0;">
@@ -178,7 +124,7 @@
                                                         Sub Total
                                                     </td>
                                                     <td style="font-size: 14px; font-weight: bold; line-height: 18px; color: #666666; padding-top: 10px; text-align: right;">
-                                                       Rs {{$price}}
+                                                       Rs {{$reading->amount}}
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -186,7 +132,7 @@
                                                         Total Fine:
                                                     </td>
                                                     <td style="font-size: 14px; font-weight: bold; line-height: 18px; color: #666666; text-align: right;">
-                                                      Rs {{$fine}}
+                                                      Rs {{$reading->fine}}
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -194,7 +140,7 @@
                                                        Total Amount
                                                     </td>
                                                     <td style="font-size: 14px; font-weight: bold; line-height: 18px; color: #666666; text-align: right;">
-                                                      Rs {{$fine+$price}}
+                                                      Rs {{$reading->fine+$reading->amount}}
                                                     </td>
                                                 </tr>
 
@@ -203,7 +149,7 @@
                                                        Payment Type
                                                     </td>
                                                     <td style="font-size: 14px; font-weight: bold; line-height: 18px; color: #666666; text-align: right; padding-bottom: 10px;">
-                                                      Cash
+                                                      {{$reading->type}}
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -213,10 +159,20 @@
                                 <!-- End calculation Section -->
                                 <div class="row">
                                     <td>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
+                                     <strong>
+                                        Remarks
+                                     </strong>
+                                       <br>
+                                       <br>
+
+                                       {{$reading->remarks}}
+                                       <br>
+                                       <br>
+                                       <br>
+                                       <br><br>
+                                       <br><br>
+                                       <br>
+
                                     </td>
                                 </div>
                                

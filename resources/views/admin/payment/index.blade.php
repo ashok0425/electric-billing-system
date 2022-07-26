@@ -18,6 +18,7 @@
             <th>Total Amount</th>
             <th>Paid on</th>
             <th>Remark</th>
+            <th>Action</th>
 
 
         </tr>
@@ -48,9 +49,7 @@ $(document).ready(function() {
             { data: 'total', name: 'total' },
             { data: 'month', name: 'month' },
             { data: 'remarks', name: 'remarks' },
-
-
-            // { data: 'action', name: 'action' },
+            { data: 'action', name: 'action' },
 
       
         ]

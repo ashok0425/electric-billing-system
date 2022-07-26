@@ -77,6 +77,7 @@ Route::middleware('auth:admin')->group(function(){
     Route::get('accounts/pay/{id}','AccountController@create')->name('user_details.pay');
     Route::get('load-total-amount','AccountController@loadAmount');
     Route::get('accounts/payment-list/{id}','AccountController@index')->name('accounts.payment');
+    Route::get('accounts/invoice-print/{id}','AccountController@print')->name('accounts.invoice');
 
     Route::Resource('transfer_meters','TransferMeterController');
     Route::get('transfer_meters/transfer/{id}','TransferMeterController@create')->name('transfer_meters.transfer');

@@ -85,11 +85,9 @@
 <div class="print text-center" style="background: red;color:white;padding:5px 10px;border-radius:10px;width:150px;cursor:pointer;margin:auto" onclick="print()">
   print
 </div>
-<div class="print text-center" style="background: rgb(0, 81, 255);color:white;padding:5px 10px;border-radius:10px;width:150px;cursor:pointer;margin:auto">
-  <a href="{{route('admin.consume_units.create')}}" style="text-decoration: none;color:#fff;">
+<a href="{{route('admin.consume_units.create')}}" class="print text-center" style="background: rgb(0, 81, 255);color:white;padding:5px 10px;border-radius:10px;width:150px;cursor:pointer;margin:auto;display:flex;justify-content:center;">
   ⬅ Back
 </a>
-</div>
 
 <div id="invoice-POS">
     <!--End InvoiceTop-->

@@ -267,12 +267,11 @@ public $UserService;
 
             ->addColumn('action',function($row){
 
-                $html=' <a href="'.route('admin.transfer_meters.transfer',$row->id).'"  data-toggle="tooltip" data-placement="top" title="Tooltip on top" class="btn btn-primary"><i class="fas fa-exchange-alt"></i></a>';
-                $html.=' <a href="'.route('admin.consume_units.print',$row->id).'" class="btn btn-primary"><i class="fas fa-print"></i></a>';
+                $html=' <a href="'.route('admin.transfer_meters.transfer',$row->id).'"  data-toggle="tooltip" data-placement="top" title="Tooltip on top" class="btn btn-primary">Transfer</a>';
+                $html.=' <a href="'.route('admin.consume_units.print',$row->id).'" class="btn btn-primary">print</a>';
 
-                $html.=' <a href="'.route('admin.accounts.payment',$row->id).'" class="btn btn-primary"><i class="fas fa-wallet"></i></a>';
-                $html.='   <a href="'.route('admin.user_details.pay',$row->id).'"  class=" btn btn-primary">
-                <i class="fa fa-money-bill"></i>
+                $html.=' <a href="'.route('admin.accounts.payment',$row->id).'" class="btn btn-primary">Bill history</a>';
+                $html.='   <a href="'.route('admin.user_details.pay',$row->id).'"  class=" btn btn-primary">Make payment</i>
   </a>';
                 return $html;
             }
