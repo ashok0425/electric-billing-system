@@ -23,23 +23,23 @@
 
                         <div class="from-group my-1 col-md-6">
                             <label>Full Name</label>
-                            <input type="text" name="name" id="" class="form-control" required value="{{$user->name}}">
+                            <input type="text" name="name" id="" class="form-control"  value="{{$user->name}}">
                         </div>
 
                         <div class="from-group my-1 col-md-6">
                             <label>Email</label>
-                            <input type="email" name="email" id="" class="form-control" required value="{{$user->email}}">
+                            <input type="email" name="email" id="" class="form-control"  value="{{$user->email}}">
                         </div>
 
                         
                         <div class="from-group my-1 col-md-6">
                             <label>Phone number</label>
-                            <input type="number" name="phone1" id="" class="form-control" required value="{{$user->detail->phone1}}">
+                            <input type="number" name="phone1" id="" class="form-control"  value="{{$user->detail->phone1}}">
                         </div>
 
                         <div class="from-group my-1 col-md-6">
                             <label>Alternative Phone number</label>
-                            <input type="number" name="phone2" id="" class="form-control" required value="{{$user->detail->phone2}}">
+                            <input type="number" name="phone2" id="" class="form-control"  value="{{$user->detail->phone2}}">
                         </div>
 
 
@@ -47,7 +47,7 @@
                         {{-- <div class="from-group my-1 col-md-6">
                             @csrf
                             <label>Select Country</label>
-                           <select name="country" id="" required class="form-control">
+                           <select name="country" id=""  class="form-control">
                             @foreach ($countries as $country)
                             <option value="{{$country->id}}" >{{$country->name}}</option>
                            @endforeach
@@ -55,7 +55,7 @@
                         </div> --}}
                         <div class="from-group my-1 col-md-6">
                             <label>Select State</label>
-                            <select name="state" id="state" required class="form-control select2">
+                            <select name="state" id="state"  class="form-control select2">
                                 <option value="">--select State--</option>
                                 @foreach ($states as $state)
                                 <option value="{{$state->id}}"
@@ -69,7 +69,7 @@
 
                         <div class="from-group my-1 col-md-6">
                             <label>Select District</label>
-                            <select name="district" id="district" required class="form-control select2">
+                            <select name="district" id="district"  class="form-control select2">
                                 <option value="">--select district--</option>
 
                                 @foreach ($districts as $district)
@@ -86,7 +86,7 @@
 
                         <div class="from-group my-1 col-md-6">
                             <label>Select Branch/Franchise</label>
-                            <select name="franchise_id" id="district" required class="form-control select2">
+                            <select name="franchise_id" id="district"  class="form-control select2">
                                 <option value="">--select State--</option>
 
                                 @foreach ($franchises as $item)
@@ -110,18 +110,18 @@
 
                         <div class="from-group my-1 col-md-6">
                             <label>City</label>
-                           <input type="text" name="city" required  class="form-control" value="{{$user->detail->city}}">
+                           <input type="text" name="city"   class="form-control" value="{{$user->detail->city}}">
                         </div>
 
                         <div class="from-group my-1 col-md-6">
                             <label>Address</label>
-                           <input type="text" name="address" required class="form-control" value="{{$user->detail->address}}">
+                           <input type="text" name="address"  class="form-control" value="{{$user->detail->address}}">
                         </div>
 
 
                         <div class="from-group my-1 col-md-6">
                             <label>Citizenship No</label>
-                           <input type="text" name="citizenship_no" required class="form-control" value="{{$user->detail->citizenship_no}}">
+                           <input type="text" name="citizenship_no"  class="form-control" value="{{$user->detail->citizenship_no}}">
                         </div>
                         <div class="from-group my-1 col-md-6">
                             <label>Citizenship photo</label>
@@ -133,23 +133,23 @@
 
                         <div class="from-group my-1 col-md-6">
                             <label>Date of Birth</label>
-                           <input type="text" name="dob" required class="datepicker form-control" value="{{$user->detail->custom_filed_1}}">
+                           <input type="text" name="dob"  class="datepicker form-control" value="{{$user->detail->custom_filed_1}}">
                         </div>
 
                         <div class="from-group my-1 col-md-6">
                             <label>Citizenship issue District</label>
-                           <input type="text" name="citizen_issue_place" required class="form-control" value="{{$user->detail->custom_filed_2}}">
+                           <input type="text" name="citizen_issue_place"  class="form-control" value="{{$user->detail->custom_filed_2}}">
                         </div>
 
                         <div class="from-group my-1 col-md-6">
                             <label>Citizenship issue date</label>
-                           <input type="text" name="citizen_issue_date" required class="datepicker form-control" value="{{$user->detail->custom_filed_3}}">
+                           <input type="text" name="citizen_issue_date"  class="datepicker form-control" value="{{$user->detail->custom_filed_3}}">
                         </div>
 
 
                         <div class="from-group my-1 col-md-6">
                             <label>Status</label>
-                            <select name="status" id="" required class="form-control">
+                            <select name="status" id=""  class="form-control">
                                 
                                 <option value="0" @if ($user->status==0)
                                     selected
