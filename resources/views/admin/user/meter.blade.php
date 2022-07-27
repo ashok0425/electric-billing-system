@@ -40,6 +40,35 @@
 $(document).ready(function() {
     $('#user_table').DataTable({
         processing: true,
+        dom:'Bfrtip',
+         buttons: [{
+                        extend: 'print',
+                        exportOptions: {
+                            stripHtml: false,
+                            columns: ':visible:not(:last-child)'
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            stripHtml: false,
+                            columns: ':visible:not(:last-child)'
+                        }
+                    },
+                    {
+                        extend: 'csv',
+                        exportOptions: {
+                            stripHtml: false,
+                            columns: ':visible:not(:last-child)'
+                        }
+                    },
+
+                    {
+                        extend: 'colvis',
+
+                    },
+                    'pageLength',
+                ],
         serverSide: true,
         ajax: '{!! route('admin.meter.index') !!}',
         columns: [

@@ -41,6 +41,35 @@ $(document).ready(function() {
     $('#user_table').DataTable({
         processing: true,
         serverSide: true,
+        dom:'Bfrtip',
+         buttons: [{
+                        extend: 'print',
+                        exportOptions: {
+                            stripHtml: false,
+                            columns: ':visible:not(:last-child)'
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            stripHtml: false,
+                            columns: ':visible:not(:last-child)'
+                        }
+                    },
+                    {
+                        extend: 'csv',
+                        exportOptions: {
+                            stripHtml: false,
+                            columns: ':visible:not(:last-child)'
+                        }
+                    },
+
+                    {
+                        extend: 'colvis',
+
+                    },
+                    'pageLength',
+                ],
         ajax: '{!! route('admin.user_details.index') !!}',
         columns: [
             { data: 'name', name: 'name' },
