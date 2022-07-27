@@ -51,9 +51,15 @@ $user->save();
     $user_detail->city=$request->city;
     $user_detail->address=$request->address;
     $user_detail->citizenship_no=$request->citizenship_no;
-    $user_detail->custom_filed_1=$request->dob[0];
+    if (isset($request->dob[0])) {
+        $user_detail->custom_filed_1=$request->dob[0];
+
+    }
     $user_detail->custom_filed_2=$request->citizen_issue_place;
+    if (isset($request->citizen_issue_date[0])) {
+
     $user_detail->custom_filed_3=$request->citizen_issue_date[0];
+    }
     $user_detail->save();
 
     DB::commit();

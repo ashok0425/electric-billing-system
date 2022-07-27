@@ -175,6 +175,7 @@ public $UserService;
      */
     public function update(Request $request, UserDetail $UserDetail)
     {
+        $this->UserService->CreateOrupdate($request,$UserDetail->user_id);
 
         $request->validate([
             'name'=>'required',
@@ -186,7 +187,6 @@ public $UserService;
         ]);
         try {
             //code...
-            $this->UserService->CreateOrupdate($request,$UserDetail->user_id);
         
         $notification=[
             'alert-type'=>'success',

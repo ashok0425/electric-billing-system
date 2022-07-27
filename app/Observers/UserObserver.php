@@ -18,11 +18,7 @@ class UserObserver
      */
     public function created(User $user)
     {
-        $user_detail=new UserDetail;
-        $user_detail->user_id=$user->id;
-        $user_detail->state_id=1;
-        $user_detail->district_id=1;
-        $user_detail->save();
+     
 
     }
     
