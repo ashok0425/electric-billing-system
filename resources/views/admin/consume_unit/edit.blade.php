@@ -53,11 +53,23 @@
     </div>
 
 
+  
     <div class="from-group my-2 col-md-6">
-        <label>Consume Unit</label>
-        <input type="number" name="unit" id="" class="form-control " required value="{{$unit->unit}}">
+        <label>Last Meter reading</label>
+        <input type="number" name="last_meter_reading" id="last_meter_reading" class="form-control" required value="{{$unit->last_meter_reading}}">
     </div>
 
+    <div class="from-group my-2 col-md-6">
+        <label>Current Meter reading</label>
+        <input type="number" name="current_total_unit" id="" class="form-control" required value="{{$unit->current_total_unit}}">
+    </div>
+
+    <div class="from-group my-2 col-md-6">
+        <label class="mt-4">
+        <input type="checkbox" name="print" id="" class="font-weight-bold" value="1" checked>
+        Print invoice
+    </label>
+    </div>
     
 
     <div class="from-group my-2 col-md-6">

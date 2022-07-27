@@ -80,17 +80,15 @@ return __fine($row->created_at,today(),$row->price);
 
             
 
-            // ->addColumn('action',function($row){
-            //     $html='
-            //   <div class="d-flex justify-content-center">
-            //   <a href="'.route('admin.consume_units.edit',$row->id).'" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-            //   <a href="'.route('admin.consume_units.delete',$row->id).'"  class="delete-btn btn btn-danger">
-            //   <i class="fa fa-trash"></i>
-            //     </a>
-            //   </div>';
-            //     return $html;
-            // }
-            // )
+            ->addColumn('action',function($row){
+                $html='
+              <div class="d-flex justify-content-center">
+              <a href="'.route('admin.consume_units.edit',$row->id).'" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+    
+              </div>';
+                return $html;
+            }
+            )
             ->rawColumns(['customer','month','action','status','due'])
             ->make(true);
 

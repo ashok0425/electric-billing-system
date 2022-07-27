@@ -53,7 +53,7 @@
 
     <div class="from-group my-2 col-md-6">
         <label>Last Meter reading</label>
-        <input type="number" name="last_meter_reading" id="last_meter_reading" class="form-control" required readonly>
+        <input type="number" name="last_meter_reading" id="last_meter_reading" class="form-control" required >
     </div>
 
     <div class="from-group my-2 col-md-6">

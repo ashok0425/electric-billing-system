@@ -1,22 +1,40 @@
-<div class="container">
+<div class="container my-5">
     <div class="row">
-        <div class="col-lg-8">
-            <div class="owl-carousel owl-carousel-2 carousel-item-1 position-relative mb-3 mb-lg-0">
+        @php
+            $banners=DB::table('blogs')->where('type',2)->orderBy('id','desc')->limit(8)->get();
+            $teams=DB::table('blogs')->where('type',3)->orderBy('id','desc')->limit(8)->get();
+
+        @endphp
+        <div class="col-lg-9">
+            <div class="owl-carousel banner-carousel">
            
-            {{-- @foreach ($posts as $post) --}}
-            <div class="position-relative overflow-hidden" style="height: 435px;">
-                <img class="img-fluid h-100" src="{{asset('frontend/img/Accident-300x169.jpg')}}" style="object-fit: cover;">
-                <div class="overlay">
-              
-                    <a class="h2 m-0 text-white font-weight-bold" href="">
-                    llll
-                </div>
-            </div>
-            {{-- @endforeach --}}
+            @foreach ($banners as $post)
+               <div class="item banner-image">
+                <img class="img-fluid " src="{{asset($post->thumbnail)}}" style="object-fit: cover;max-height: 450px!important">
+    
+                <span class="banner-text text-light px-2">
+                    <h2>
+                        {{$post->title}}</h2> 
+                </span>
+               </div>
+            @endforeach
             </div>
         </div>
-        <div class="col-md-4">
-            
+        <div class="col-md-3">
+            <div class="team-wrapper text-center">
+                @foreach ($teams as $item)
+                <div class="team mb-2">
+                    <img src="{{asset($item->thumbnail)}}" alt="" class="img-fluid thumbnail shadow-sm">
+                    <div class="team-text">
+                        {{$item->title}}
+                        <br>
+                        {{$item->position}}
+
+                    </div>
+                </div>
+                @endforeach
+             
+            </div>
         </div>
     </div>
 </div>

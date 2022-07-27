@@ -49,7 +49,7 @@ use App\Models\ConsumeUnit;
 
         <div class="col-md-6 my-2">
             @php
-                $month = DB::table('consume_units')->sum('unit');
+                $month = DB::table('consume_units')->where('user_id',Auth::user()->id)->sum('unit');
             @endphp
             <div class="card shadow-sm" style="border: 1.5px solid #005596">
 

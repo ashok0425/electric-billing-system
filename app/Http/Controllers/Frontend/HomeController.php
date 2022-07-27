@@ -12,7 +12,7 @@ class HomeController extends Controller
  
 
  public function blog(){
-     $blogs=Blog::orderBy('id','desc')->paginate(12);
+     $blogs=Blog::orderBy('id','desc')->where('type',1)->paginate(12);
       return view('frontend.blog.index',compact('blogs'));
  }
 

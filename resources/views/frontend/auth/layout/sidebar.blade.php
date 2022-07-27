@@ -37,7 +37,7 @@
     
     <li class="nav-item @if (Request()->segment(1)=='make') active @endif    ">
         <a class="nav-link" href="{{route('make.payment')}}">
-        <i class="fas fa-fw fa-dollar"></i>
+        <i class="fas fa-fw fa-wallet"></i>
         <span>Pay Now </span></a>
     </li>
 

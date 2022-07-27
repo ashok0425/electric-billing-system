@@ -18,6 +18,7 @@
             <th>Meter Reading</th>
             <th>Amount paid</th>
             <th>Transferred On</th>
+            <th>Remark </th>
 
 
         </tr>
@@ -48,6 +49,7 @@ $(document).ready(function() {
             { data: 'total_unit', name: 'total_unit' },
             { data: 'transfer_amount', name: 'transfer_amount' },
             { data: 'created_at', name: 'created_at' },
+            { data: 'remark', name: 'remark' },
 
 
       

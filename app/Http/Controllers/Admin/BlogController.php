@@ -40,6 +40,21 @@ class BlogController extends Controller
                 return $html;
             })
 
+            ->editColumn('type',function($row){
+                if ($row->type==1) {
+                    $html='Notice';
+                }
+                if ($row->type==2) {
+                    $html='Banner';
+                }
+
+                if ($row->type==3) {
+                    $html='Team';
+                }
+              
+                return $html;
+            })
+
             ->rawColumns(['action'])
             ->make(true);
 
@@ -75,7 +90,9 @@ return view('admin.blog.index');
            $blog->title=$request->title;
            $blog->description=$request->description;
            $blog->slug=Str::slug($request->title);
-           $blog->type=1;
+           $blog->type=$request->type;
+           $blog->position=$request->position;
+
            $file=$request->file('thumbnail');
            
            if($file){
@@ -141,7 +158,8 @@ return view('admin.blog.index');
            $blog->title=$request->title;
            $blog->description=$request->description;
            $blog->slug=Str::slug($request->title);
-           $blog->type=1;
+           $blog->type=$request->type;
+           $blog->position=$request->position;
            $file=$request->file('thumbnail');
            if($file){
                File::delete($blog->thumbnail);

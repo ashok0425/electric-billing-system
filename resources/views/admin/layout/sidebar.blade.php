@@ -74,6 +74,11 @@
         <i class="fas fa-fw fa-copy"></i>
         <span>Cms </span></a>
     </li>
+    <li class="nav-item  @if (Request()->segment(2)=='blogs') active @endif  ">
+        <a class="nav-link" href="{{route('admin.blogs.index')}}">
+        <i class="fas fa-fw fa-copy"></i>
+        <span>Blog </span></a>
+    </li>
 
     <li class="nav-item  @if (Request()->segment(2)=='contacts') active @endif  ">
         <a class="nav-link" href="{{route('admin.contacts.index')}}">

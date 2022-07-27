@@ -13,7 +13,7 @@
     <thead>
         <tr>
             <th>Title</th>
-            <th>Type</th>
+            <th>Thumbnail</th>
             <th>Created at</th>
             <th>Action </th>
            
@@ -42,8 +42,7 @@ $(document).ready(function() {
         ajax: '{!! route('admin.blogs.index') !!}',
         columns: [
             { data: 'title', name: 'title' },
-            { data: 'type', name: 'type' },
-
+            { data: 'thumbnail', name: 'thumbnail' },
             { data: 'created_at', name: 'created_at' },
             { data: 'action', name: 'action' },
           

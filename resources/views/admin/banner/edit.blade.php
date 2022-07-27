@@ -25,26 +25,7 @@
 
 
 
-    <div class="from-group my-2 col-md-6 col-md-6">
-        <label>Type </label>
-       <select name="type" id="" class="form-control">
-        <option value="">--select Type--</option>
-        <option value="1" @if ($blog->type==1)
-            selected
-        @endif>Notice</option>
-        <option value="2" @if ($blog->type==2)
-            selected
-        @endif>Banner</option>
-        <option value="3" @if ($blog->type==3)
-            selected
-        @endif>Team</option>
-v
-       </select>
-    </div>
-    <div class="from-group my-2 col-md-6 col-md-6">
-        <label>Position (Only if Type is team)</label>
-        <input type="text" name="position" class="form-control"  autocomplete="off" value="{{$blog->position}}">
-    </div>
+
 
     <div class="from-group my-2 col-md-6 col-md-6">
         <label>Title </label>
@@ -61,7 +42,7 @@ v
 
 
     <div class="from-group my-2 col-12">
-        <label>Description </label>
+        <label>Remarks </label>
 <textarea name="description" id="summernote1" cols="30" rows="10">
     {{$blog->description}}
 </textarea>

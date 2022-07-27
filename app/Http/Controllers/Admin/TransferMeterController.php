@@ -52,7 +52,6 @@ return view('admin.transfer_meter.index');
     public function create($id=null)
     {
         $users=User::all();
-
         $current_unit=ConsumeUnit::where('user_id',$id)->latest()->first();
         return view('admin.transfer_meter.create',compact('users','id','current_unit'));
 
@@ -82,10 +81,13 @@ return view('admin.transfer_meter.index');
            $account->total_unit=$request->total_unit;
            $account->meter_id=$user->meter_id;
            $account->transfer_amount=$request->transfer_amount;
+           $account->remark=$request->remark;
            $account->save();
            $user->is_transfered=1;
            $user->transfer_to=$request->transfer_to;
            $user->save();
+           ConsumeUnit::where('user_id',$user->id)->update(['user_id'=>$request->transfer_to]);
+           Account::where('user_id',$user->id)->update(['user_id'=>$request->transfer_to]);
            DB::commit();
 
             $notification=[

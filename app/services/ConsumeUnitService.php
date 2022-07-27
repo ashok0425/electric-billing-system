@@ -18,6 +18,9 @@ if($id!=null){
 
 }else{
     $consume_unit=new ConsumeUnit;
+    // $consume_unit->bill_no=;
+
+
 }
 $consume_unit->user_id=$request->user;
 $consume_unit->from=$request->from[0];

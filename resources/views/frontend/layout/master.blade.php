@@ -106,6 +106,14 @@
           border-radius: 50%;
 
         }
+      .banner-image{
+        position: relative;
+      }
+        .banner-text{
+            position: absolute;
+            top: 70%;
+            z-index: 999;
+        }
     </style>
 </head>
 
@@ -148,12 +156,11 @@
 
 
 
-        $('.owl-carousel').owlCarousel({
+        $('.banner-carousel').owlCarousel({
     loop:true,
     margin:10,
     responsiveClass:true,
     nav:true,
-   loop:true,
 navText:['⬅','➡'],
     responsive:{
         0:{

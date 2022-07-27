@@ -34,7 +34,7 @@
             @if (isset($id)&&$id!=null && $id=$user->id)
             selected
         @endif
-            > {{$user->meter_id}}</option>
+            > {{$user->name}},{{$user->meter_id}}</option>
             
         @endforeach
        </select>

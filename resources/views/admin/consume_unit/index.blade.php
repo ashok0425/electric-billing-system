@@ -27,7 +27,7 @@
             <th>Due Date</th>
 
             <th>Status</th>
-            {{-- <th>Action</th> --}}
+            <th>Action</th>
 
 
         </tr>
@@ -64,7 +64,7 @@ $(document).ready(function() {
 
             { data: 'status', name: 'status' },
 
-            // { data: 'action', name: 'action' },
+            { data: 'action', name: 'action' },
 
       
         ]
