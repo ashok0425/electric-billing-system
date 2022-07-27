@@ -25,11 +25,11 @@ class AccountController extends Controller
                 if($id!=null){
                     $units=Account::whereHas('user',function($q){
                         $q->where('franchise_id','=',Auth::guard('admin')->user()->id);
-                    })->orderBy('id','desc')->where('user_id',$id)->get();
+                    })->orderBy('created_at','desc')->where('user_id',$id)->get();
                 }else{
                 $units=Account::whereHas('user',function($q){
                     $q->where('franchise_id','=',Auth::guard('admin')->user()->id);
-                })->orderBy('id','desc')->get();
+                })->orderBy('created_at','desc')->get();
             }
             }else{
                 if($id!=null){
