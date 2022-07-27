@@ -11,7 +11,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>{{$cms->meta_title}}</title>
+    <title>{{$cms->company_name}}</title>
     <link rel="shortcut  icon" href="{{asset($cms->fev)}}" type="image/icon type">
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />

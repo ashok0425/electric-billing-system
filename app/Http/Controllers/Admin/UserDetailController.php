@@ -250,9 +250,9 @@ public $UserService;
 
             ->editColumn('is_transfered',function($row){
                 if ($row->is_transfered==0) {
-                    return '<div class="badge bg-primary text-white">No</div>';
+                    return 'No';
                 }else{
-                    return '<div class="badge bg-success text-white">yes</div>';
+                    return 'yes';
 
                 }
                 
@@ -261,7 +261,6 @@ public $UserService;
             ->addColumn('customer',function($row){
                 $html=$row->name.'<br> C_No: '.$row->costumer_id;
 
-                $html.='<br> <a href="'.route('admin.user_details.show',$row->detail->id).'" class="btn btn-primary"><i class="fas fa-eye"></i></a>';
                 return $html;
             })
 
@@ -274,6 +273,8 @@ public $UserService;
                 $html.=' <a href="'.route('admin.accounts.payment',$row->id).'" class="btn btn-primary" title="Payment History"><i class="fas fa-copy"></i></a>';
                 $html.='   <a href="'.route('admin.user_details.pay',$row->id).'"  class=" btn btn-primary" title="Make Payment"><i class="fas fa-wallet"></i>
   </a>';
+  
+  $html.=' <a href="'.route('admin.user_details.show',$row->detail->id).'" class="btn btn-primary"><i class="fas fa-eye"></i></a>';
                 return $html;
             }
             )

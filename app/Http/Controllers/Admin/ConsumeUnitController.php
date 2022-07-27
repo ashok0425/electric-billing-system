@@ -46,7 +46,7 @@ return __fine($row->created_at,today(),$row->price);
 })
 
 ->addColumn('due',function($row){
-     $data=__dueDate($row->created_at,today()).'<br>';
+     $data=__dueDate($row->created_at,today()).'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
         $data.= __getNepaliDate($row->created_at,1);
         return $data;
     
@@ -55,7 +55,7 @@ return __fine($row->created_at,today(),$row->price);
  
             ->addColumn('month',function($row){
                 $html= __getNepaliDate($row->from);
-                $html.='<br> -';
+                $html.='↔';
                 $html .=__getNepaliDate($row->to);
                 return $html;
             })
