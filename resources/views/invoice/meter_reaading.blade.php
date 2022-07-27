@@ -71,7 +71,8 @@
   }
   @media print{
     .print{
-      display: none;
+      display: none!important;
+
     }
   }
 </style>

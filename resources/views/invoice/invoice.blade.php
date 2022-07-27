@@ -15,7 +15,8 @@
             .main-temp table td {border-collapse: collapse;}
             @media print{
     .print{
-      display: none;
+        display: none!important;
+
     }
   }
         </style>
