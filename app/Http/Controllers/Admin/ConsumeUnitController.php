@@ -24,15 +24,15 @@ class ConsumeUnitController extends Controller
      */
     public function index(Request $request)
     {
-        $units=ConsumeUnit::with('user')->orderBy('id','desc')->get();
+        $units=ConsumeUnit::with('user')->orderBy('created_at','desc')->get();
         if($request->ajax()){
             if(Auth::guard('admin')->user()->type=='franchise'){
 
                 $units=ConsumeUnit::whereHas('user',function($q){
                     $q->where('franchise_id','=',Auth::guard('admin')->user()->id);
-                })->orderBy('id','desc')->get();
+                })->orderBy('created_at','desc')->get();
             }else{
-                $units=ConsumeUnit::with('user')->orderBy('id','desc')->get();
+                $units=ConsumeUnit::with('user')->orderBy('created_at','desc')->get();
 
             }
             return Datatables::of($units)

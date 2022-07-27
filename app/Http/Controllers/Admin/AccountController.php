@@ -34,9 +34,9 @@ class AccountController extends Controller
             }else{
                 if($id!=null){
 
-                $units=Account::with('user')->where('user_id',$id)->orderBy('id','desc')->get();
+                $units=Account::with('user')->where('user_id',$id)->orderBy('created_at','desc')->get();
             }else{
-                $units=Account::with('user')->orderBy('id','desc')->get();
+                $units=Account::with('user')->orderBy('created_at','desc')->get();
                 
             }
 
