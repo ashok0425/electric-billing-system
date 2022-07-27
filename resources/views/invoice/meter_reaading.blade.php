@@ -127,6 +127,13 @@
     <div class="header-text">Citizenship number</div>
     <div class="header-text">{{$current->user->detail->citizenship_no}}</div>
    </div>
+
+         
+   <div class="header">
+    <div class="header-text">Bill No</div>
+    <div class="header-text">{{$current->bill_no}}</div>
+   </div>
+        
         
       </div>
     </div>

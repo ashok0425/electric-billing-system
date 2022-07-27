@@ -133,9 +133,9 @@ return view('admin.consume_unit.index');
 
 
         ]);
+        $this->ConsumeUnitService->CreateOrUpdate($request);
 
         try {
-        $this->ConsumeUnitService->CreateOrUpdate($request);
            
 
             $notification=[
@@ -144,7 +144,6 @@ return view('admin.consume_unit.index');
             ];
             if($request->print==1){
                 return redirect()->route('admin.consume_units.print',['id'=>$request->user])->with($notification);
-
             }
 
         } catch (\Throwable $th) {

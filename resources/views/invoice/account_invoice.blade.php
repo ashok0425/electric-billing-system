@@ -25,7 +25,7 @@
         <div class="print text-center" style="background: red;color:white;padding:5px 10px;border-radius:10px;width:150px;cursor:pointer;margin:auto" onclick="print()">
             print
           </div>
-          <a href="{{route('admin.consume_units.create')}}" class="print text-center" style="background: rgb(0, 81, 255);color:white;padding:5px 10px;border-radius:10px;width:150px;cursor:pointer;margin:auto;display:flex;justify-content:center;">
+          <a href="{{route('admin.accounts.index')}}" class="print text-center" style="background: rgb(0, 81, 255);color:white;padding:5px 10px;border-radius:10px;width:150px;cursor:pointer;margin:auto;display:flex;justify-content:center;">
             ⬅ Back
           </a>
         @php
@@ -104,6 +104,13 @@
                                                  
                                                     <td style="width: 45%; font-size: 14px; line-height: 18px; color: #666666; padding-bottom: 10px;">
                                                         Customer No:{{$user->costumer_id}}
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                 
+                                                    <td style="width: 45%; font-size: 14px; line-height: 18px; color: #666666; padding-bottom: 10px;">
+                                                        Voucher No:{{$reading->voucher_no}}
 
                                                     </td>
                                                 </tr>

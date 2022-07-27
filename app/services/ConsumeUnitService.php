@@ -18,7 +18,17 @@ if($id!=null){
 
 }else{
     $consume_unit=new ConsumeUnit;
-    // $consume_unit->bill_no=;
+    $recent_order=ConsumeUnit::orderBy('id','desc')->whereYear('created_at',date('Y'))->first();
+    if ($recent_order) {
+     $arr=explode('/',$recent_order->bill_no);
+        $bill_no=str_pad($arr[0] + 1, 6, "0", STR_PAD_LEFT);
+    }else{
+        $bill_no=str_pad(1, 6, "0", STR_PAD_LEFT);
+    }
+    $year=date('Y')+57;
+    
+    $consume_unit->bill_no=$bill_no.'/'.$year;
+
 
 
 }

@@ -17,6 +17,7 @@
             <th>Fine Amount</th>
             <th>Total Amount</th>
             <th>Paid on</th>
+            <th>Voucher No</th>
             <th>Remark</th>
             <th>Action</th>
 
@@ -77,6 +78,7 @@ $(document).ready(function() {
             { data: 'fine', name: 'fine' },
             { data: 'total', name: 'total' },
             { data: 'month', name: 'month' },
+            { data: 'voucher_no', name: 'voucher_no' },
             { data: 'remarks', name: 'remarks' },
             { data: 'action', name: 'action' },
 

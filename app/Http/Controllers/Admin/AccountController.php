@@ -121,6 +121,18 @@ return view('admin.payment.index');
            $account->fine=$request->fine;
            $account->user_id=$request->user;
            $account->remarks=$request->remark;
+
+           $recent_order=Account::orderBy('id','desc')->where('voucher_no','!=',null)->whereYear('created_at',date('Y'))->first();
+           if ($recent_order) {
+            $arr=explode('/',$recent_order->voucher_no);
+               $bill_no=str_pad($arr[0] + 1, 6, "0", STR_PAD_LEFT);
+           }else{
+               $bill_no=str_pad(1, 6, "0", STR_PAD_LEFT);
+           }
+           $year=date('Y')+57;
+           
+           $account->voucher_no=$bill_no.'/'.$year;
+
            $account->save();
            session()->put('consume_id',$cid);
            ConsumeUnit::where('user_id',$request->user)->where('status',0)->update(['status'=>1]);
@@ -131,8 +143,9 @@ return view('admin.payment.index');
                  'messege'=>'Created successfully'
             ];
             $id=$request->user;
+            $voucher_no=$account->voucher_no;
             if (count($cid)>0) {
-                return view('invoice.invoice',compact('id'));
+                return view('invoice.invoice',compact('id','voucher_no'));
 
             }
         // } catch (\Throwable $th) {

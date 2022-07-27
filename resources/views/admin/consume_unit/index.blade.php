@@ -25,7 +25,7 @@
             <th>Price</th>
             <th>Fine</th>
             <th>Due Date</th>
-
+            <th>Bill No</th>
             <th>Status</th>
             <th>Action</th>
 
@@ -90,6 +90,7 @@ $(document).ready(function() {
             { data: 'price', name: 'price' },
             { data: 'fine', name: 'fine' },
             { data: 'due', name: 'due' },
+            { data: 'bill_no', name: 'bill_no' },
 
             { data: 'status', name: 'status' },
 

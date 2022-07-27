@@ -44,3 +44,8 @@ function __dueDate($from,$to){
 return $diff_in_day=$to->diffInDays($from).' Days';
 
 }
+
+function __getNepaliYear($year){
+   return DateConverter::fromEnglishDate(\Carbon\Carbon::parse($year)->year,1,1)->toFormattedNepaliDate();
+
+}

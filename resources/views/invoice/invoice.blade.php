@@ -114,6 +114,13 @@
 
                                                     </td>
                                                 </tr>
+                                                <tr>
+                                                 
+                                                    <td style="width: 45%; font-size: 14px; line-height: 18px; color: #666666; padding-bottom: 10px;">
+                                                        Voucher No:{{$voucher_no}}
+
+                                                    </td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </td>
