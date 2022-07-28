@@ -46,8 +46,6 @@ $consume_unit->created_at=$request->meter_reading_date;
     
 }
 $consume_unit->save();
-
-
     DB::commit();
 
 }

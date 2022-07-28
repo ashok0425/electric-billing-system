@@ -65,7 +65,7 @@
     </div>
     <div class="from-group my-2 col-md-6">
         <label> Meter reading Date</label>
-        <input type="date" name="meter_reading_date" id="" class="form-control" required >
+        <input type="date" name="meter_reading_date" id="" class="form-control"  >
         <p>{{$unit->meter_reading_date}}</p>
     </div>
     <div class="from-group my-2 col-md-6">
