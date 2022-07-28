@@ -42,6 +42,10 @@ $(document).ready(function() {
     $('#unit_table').DataTable({
         processing: true,
         dom:'Bfrtip',
+        lengthMenu: [
+					[10, 25, 50, -1],
+					['10 row', '25 row', '50 row', 'All Rows']
+				],
          buttons: [{
                         extend: 'print',
                         exportOptions: {

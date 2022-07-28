@@ -63,7 +63,11 @@
         <label>Current Meter reading</label>
         <input type="number" name="current_total_unit" id="" class="form-control" required value="{{$unit->current_total_unit}}">
     </div>
-
+    <div class="from-group my-2 col-md-6">
+        <label> Meter reading Date</label>
+        <input type="date" name="meter_reading_date" id="" class="form-control" required >
+        <p>{{$unit->meter_reading_date}}</p>
+    </div>
     <div class="from-group my-2 col-md-6">
         <label class="mt-4">
         <input type="checkbox" name="print" id="" class="font-weight-bold" value="1" checked>

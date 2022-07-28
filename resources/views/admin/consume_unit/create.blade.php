@@ -62,6 +62,11 @@
     </div>
 
     <div class="from-group my-2 col-md-6">
+        <label> Meter reading Date</label>
+        <input type="date" name="meter_reading_date" id="" class="form-control" required >
+    </div>
+
+    <div class="from-group my-2 col-md-6">
         <label class="mt-4">
         <input type="checkbox" name="print" id="" class="font-weight-bold" value="1" checked>
         Print invoice

@@ -39,8 +39,12 @@ $consume_unit->unit=$request->unit;
 $consume_unit->price=$request->price;
 $consume_unit->current_total_unit=$request->current_total_unit;
 $consume_unit->last_meter_reading=$request->last_meter_reading;
-
 $consume_unit->status=$request->status?$request->status:0;
+
+if ($request->meter_reading_date!=null) {
+$consume_unit->created_at=$request->meter_reading_date;
+    
+}
 $consume_unit->save();
 
 
