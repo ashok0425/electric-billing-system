@@ -12,7 +12,7 @@
                         @php
     use carbon\carbon;
 
-                            $month=DB::table('accounts')->whereYear('created_at',carbon::now()->year)->whereMonth('created_at',Carbon::now()->month)->sum('amount');
+                            $month=DB::table('accounts')->whereYear('created_at',carbon::now()->year)->sum('amount');
                         @endphp
                      <div class="card shadow-sm" style="border: 1.5px solid #005596">
                        
@@ -33,7 +33,7 @@
             
             <div class="col-md-3">
                 @php
-                    $month=DB::table('consume_units')->whereYear('created_at',carbon::now()->year)->whereMonth('created_at',Carbon::now()->month)->sum('unit');
+                    $month=DB::table('consume_units')->whereYear('created_at',carbon::now()->year)->sum('unit');
                 @endphp
              <div class="card shadow-sm" style="border: 1.5px solid #005596">
                
@@ -50,7 +50,7 @@
 
     <div class="col-md-3">
         @php
-            $month=DB::table('consume_units')->whereYear('created_at',carbon::now()->year)->whereMonth('created_at',Carbon::now()->month)->where('status',1)->sum('price');
+            $month=DB::table('consume_units')->whereYear('created_at',carbon::now()->year)->where('status',1)->sum('price');
         @endphp
      <div class="card shadow-sm" style="border: 1.5px solid #005596">
        
@@ -69,7 +69,7 @@
 
 <div class="col-md-3">
     @php
-        $month=DB::table('consume_units')->whereYear('created_at',carbon::now()->year)->whereMonth('created_at',Carbon::now()->month)->where('status',0)->sum('price');
+        $month=DB::table('consume_units')->whereYear('created_at',carbon::now()->year)->where('status',0)->sum('price');
     @endphp
  <div class="card shadow-sm" style="border: 1.5px solid #005596">
    

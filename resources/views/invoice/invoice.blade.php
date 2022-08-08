@@ -153,9 +153,9 @@
                                                     </td>
                                                     <td style="font-size: 14px; line-height: 18px; color: #757575; text-align: right;">
                                                         @php
-               $fine= __fine($item->created_at,today(),$item->price)
+               $current_fine= __fine($item->created_at,today(),$item->price)
                                                         @endphp
-                                                        Fine: {{$fine}}
+                                                        Fine: {{$current_fine}}
                                                     </td>
                                                 </tr>
                                                 <tr>
