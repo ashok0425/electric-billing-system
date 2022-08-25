@@ -1,6 +1,12 @@
 @extends('admin.layout.master')
 @section('content')
+@php
+$paid=0;
+       if (isset($_GET['paid'])) {
+            $paid=$_GET['paid'];
 
+        }
+@endphp
 <div class="container">
     <div class="card">
         <div class="card-header row">
@@ -83,7 +89,14 @@ $(document).ready(function() {
                     'pageLength',
                 ],
         serverSide: true,
-        ajax: '{!! route('admin.consume_units.index') !!}',
+        ajax: {
+            url:'{{route('admin.consume_units.index')}}',
+            "data": function(d){
+             d.paid={{$paid}}
+            }
+
+        },
+
         columns: [
             { data: 'customer', name: 'customer' },
             { data: 'month', name: 'month' },

@@ -8,16 +8,16 @@
         
                 <div class="row">
                  
-                    <div class="col-md-3">
+                    <a class="col-md-3" href="{{route('admin.accounts.index')}}">
                         @php
     use carbon\carbon;
 
-                            $month=DB::table('accounts')->whereYear('created_at',carbon::now()->year)->sum('amount');
+                            $month=DB::table('accounts')->sum('amount');
                         @endphp
                      <div class="card shadow-sm" style="border: 1.5px solid #005596">
                        
                         <div class="card-body">
-                            <strong class="m-0 font-weight-bold text-primary pt-2 ">Current month Collection</strong>
+                            <strong class="m-0 font-weight-bold text-primary pt-2 ">Total Collection</strong>
 
                          <h4 class="font-weignt-bold text-primary mt-2">
                            <i class="fas fa-rupee-sign"></i> {{$month}}
@@ -25,20 +25,20 @@
                          
                     </div>
                 </div>
-            </div>
+            </a>
 
 
 
 
             
-            <div class="col-md-3">
+            <a class="col-md-3" href="{{route('admin.consume_units.index')}}">
                 @php
-                    $month=DB::table('consume_units')->whereYear('created_at',carbon::now()->year)->sum('unit');
+                    $month=DB::table('consume_units')->sum('unit');
                 @endphp
              <div class="card shadow-sm" style="border: 1.5px solid #005596">
                
                 <div class="card-body">
-                    <strong class="m-0 font-weight-bold text-primary pt-2 "> Montly Consumptions</strong>
+                    <strong class="m-0 font-weight-bold text-primary pt-2 "> Total Consumptions</strong>
 
                  <h4 class="font-weignt-bold text-primary mt-2">
                     <i class="fas fa-faucet"></i> {{$month}}
@@ -46,16 +46,16 @@
                  
             </div>
         </div>
-    </div>
+    </a>
 
-    <div class="col-md-3">
+    <a class="col-md-3" href="{{route('admin.consume_units.index',['paid'=>2])}}">
         @php
-            $month=DB::table('consume_units')->whereYear('created_at',carbon::now()->year)->where('status',1)->sum('price');
+            $month=DB::table('consume_units')->where('status',1)->sum('price');
         @endphp
      <div class="card shadow-sm" style="border: 1.5px solid #005596">
        
         <div class="card-body">
-            <strong class="m-0 font-weight-bold text-primary pt-2 "> Month Paid Amount</strong>
+            <strong class="m-0 font-weight-bold text-primary pt-2 "> Paid Amount</strong>
 
          <h4 class="font-weignt-bold text-primary mt-2">
             <i class="fas fa-money-bill"></i> {{$month}}
@@ -63,18 +63,19 @@
          
     </div>
 </div>
-</div>
+</a>
 
 
 
-<div class="col-md-3">
+<a class="col-md-3" href="{{route('admin.consume_units.index',['paid'=>2])}}">
+
     @php
-        $month=DB::table('consume_units')->whereYear('created_at',carbon::now()->year)->where('status',0)->sum('price');
+        $month=DB::table('consume_units')->where('status',0)->sum('price');
     @endphp
  <div class="card shadow-sm" style="border: 1.5px solid #005596">
    
     <div class="card-body">
-        <strong class="m-0 font-weight-bold text-primary pt-2 "> Month Due Amount</strong>
+        <strong class="m-0 font-weight-bold text-primary pt-2 ">  Due Amount</strong>
 
      <h4 class="font-weignt-bold text-danger mt-2">
         <i class="fas fa-money-bill"></i> {{$month}}
@@ -82,7 +83,7 @@
      
 </div>
 </div>
-</div>
+</a>
         </div>
 
         <div class="row mt-5">

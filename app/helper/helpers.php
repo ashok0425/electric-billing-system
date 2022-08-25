@@ -49,3 +49,23 @@ function __getNepaliYear($year){
    return DateConverter::fromEnglishDate(\Carbon\Carbon::parse($year)->year,1,1)->toFormattedNepaliDate();
 
 }
+
+
+function __sendSms($to,$msg){
+  $args = http_build_query(array(
+    'auth_token'=> 'a4e1eb2027e5edb5e043d574db2af91cc340879d8aa6295855f3fe2879f19f7b',
+    'to'    => "$to",
+    'text'  => "$msg"));
+$url = "https://sms.aakashsms.com/sms/v3/send/";
+
+# Make the call using API.
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_POST, 1); ///
+curl_setopt($ch, CURLOPT_POSTFIELDS,$args);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+// Response
+$response = curl_exec($ch);
+curl_close($ch);   
+return $response;
+}

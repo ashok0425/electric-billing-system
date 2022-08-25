@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use UserDetail;
 use Yajra\DataTables\Facades\DataTables;
 
 class AccountController extends Controller
@@ -138,10 +139,20 @@ return view('admin.payment.index');
            ConsumeUnit::where('user_id',$request->user)->where('status',0)->update(['status'=>1]);
            DB::commit();
 
+           $user_name=User::find($request->user)->value('name');
+           $mobile=DB::table('user_details')->where('user_id',$request->user)->value('phone1');
+        //   __sendSms('977-'.$mobile,"Hello, $user_name. Thankyou for paying");
+
+
+
+
+
             $notification=[
                 'alert-type'=>'success',
                  'messege'=>'Created successfully'
             ];
+         
+
             $id=$request->user;
             $voucher_no=$account->voucher_no;
             if (count($cid)>0) {

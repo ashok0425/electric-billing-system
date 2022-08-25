@@ -24,15 +24,24 @@ class ConsumeUnitController extends Controller
      */
     public function index(Request $request)
     {
+     
         $units=ConsumeUnit::with('user')->orderBy('created_at','desc')->get();
         if($request->ajax()){
             if(Auth::guard('admin')->user()->type=='franchise'){
 
                 $units=ConsumeUnit::whereHas('user',function($q){
                     $q->where('franchise_id','=',Auth::guard('admin')->user()->id);
-                })->orderBy('created_at','desc')->get();
+                })->orderBy('created_at','desc');
             }else{
-                $units=ConsumeUnit::with('user')->orderBy('created_at','desc')->get();
+                $units=ConsumeUnit::with('user')->orderBy('created_at','desc');
+
+            }
+            if (isset($request->paid)&&$request->paid==1) {
+                $units=$units->where('status',1)->get();
+            }else if(isset($request->paid)&&$request->paid==2){
+                    $units=$units->where('status',0)->get();
+            }else{
+                $units=$units->get();
 
             }
             return Datatables::of($units)
@@ -134,6 +143,7 @@ return view('admin.consume_unit.index');
 
         ]);
         $this->ConsumeUnitService->CreateOrUpdate($request);
+
 
         try {
            
