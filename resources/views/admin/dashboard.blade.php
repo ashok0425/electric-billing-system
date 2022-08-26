@@ -65,17 +65,16 @@
 </div>
 </a>
 
-
+<br>
 <a class="col-md-3" href="{{route('admin.consume_units.index',['paid'=>2])}}">
  
   @php
-     $units=DB::table('consume_units')::where('status',0)->get();
+     $units=DB::table('consume_units')->where('status',0)->get();
           $fine=0;
   @endphp
         @foreach($units as $value)
          @php
               $fine+=__fine($value->created_at,today(),$value->price);
-          $price+=$value->price;
          @endphp
   @endforeach
  <div class="card shadow-sm" style="border: 1.5px solid #005596">

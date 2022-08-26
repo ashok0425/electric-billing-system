@@ -38,7 +38,7 @@ class ConsumeUnitController extends Controller
             if (isset($request->paid)&&$request->paid==1) {
                 $units=$units->where('status',1)->get();
             }else if(isset($request->paid)&&$request->paid==2){
-                    $units=$units->where('amount','!=',0)->where('status',0)->get();
+                    $units=$units->where('price','!=',0)->where('status',0)->get();
             }else{
                 $units=$units->get();
 
