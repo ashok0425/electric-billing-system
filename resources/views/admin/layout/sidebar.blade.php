@@ -35,7 +35,6 @@
         <i class="fas fa-fw fa-users"></i>
         <span>Meter List</span></a>
     </li>
-    @endif
 
     <li class="nav-item  @if (Request()->segment(2)=='consume_units')  active @endif    ">
         <a class="nav-link" href="{{route('admin.consume_units.index')}}">
