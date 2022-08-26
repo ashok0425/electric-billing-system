@@ -53,13 +53,12 @@
     </li>
 @endif
 
-@if (Auth::guard('admin')->user()->type=='admin'||Auth::guard('admin')->user()->type=='franchise')
+
     <li class="nav-item @if (Request()->segment(2)=='accounts') active @endif    ">
         <a class="nav-link" href="{{route('admin.accounts.index')}}">
         <i class="fas fa-fw fa-wallet"></i>
         <span>Payments </span></a>
     </li>
-@endif
     @if (Auth::guard('admin')->user()->type=='admin')
     <li class="nav-item @if (Request()->segment(2)=='transfer_meters')  active @endif  ">
         <a class="nav-link" href="{{route('admin.transfer_meters.index')}}">

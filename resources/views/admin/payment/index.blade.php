@@ -18,6 +18,7 @@
             <th>Total Amount</th>
             <th>Paid on</th>
             <th>Voucher No</th>
+            <th>Bill By</th>
             <th>Remark</th>
             <th>Action</th>
 
@@ -83,6 +84,8 @@ $(document).ready(function() {
             { data: 'total', name: 'total' },
             { data: 'month', name: 'month' },
             { data: 'voucher_no', name: 'voucher_no' },
+            { data: 'admin', name: 'admin_id' },
+
             { data: 'remarks', name: 'remarks' },
             { data: 'action', name: 'action' },
 

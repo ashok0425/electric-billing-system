@@ -75,6 +75,7 @@
     </label>
     </div>
     
+    @if (Auth::guard('admin')->user()->id==1) 
 
     <div class="from-group my-2 col-md-6">
         <label>Status</label>
@@ -91,6 +92,7 @@
 
        </select>
     </div>
+@endif
 </div>
 
             <input type="submit" class="btn btn-primary" value="save">

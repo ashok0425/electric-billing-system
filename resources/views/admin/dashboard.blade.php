@@ -48,7 +48,7 @@
         </div>
     </a>
 
-    <a class="col-md-3" href="{{route('admin.consume_units.index',['paid'=>2])}}">
+    <a class="col-md-3" href="{{route('admin.consume_units.index',['paid'=>1])}}">
         @php
             $month=DB::table('consume_units')->where('status',1)->sum('price');
         @endphp

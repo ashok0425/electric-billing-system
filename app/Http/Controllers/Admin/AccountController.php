@@ -58,7 +58,11 @@ class AccountController extends Controller
               
                 return $html;
             })
-
+            ->addColumn('admin',function($row){
+                $html= $row->admin->name;
+              
+                return $html;
+            })
             ->addColumn('month',function($row){
                 $html= __getNepaliDate($row->created_at,1);
               
@@ -122,6 +126,7 @@ return view('admin.payment.index');
            $account->fine=$request->fine;
            $account->user_id=$request->user;
            $account->remarks=$request->remark;
+           $account->admin_id=Auth::guard('admin')->user()->id;
 
            $recent_order=Account::orderBy('id','desc')->where('voucher_no','!=',null)->whereYear('created_at',date('Y'))->first();
            if ($recent_order) {
