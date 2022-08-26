@@ -67,10 +67,9 @@
 
 
 <a class="col-md-3" href="{{route('admin.consume_units.index',['paid'=>2])}}">
-    @php
-        $month=DB::table('consume_units')->where('status',1)->sum('price');
-    @endphp
+ 
   @php
+     $units=DB::table('consume_units')::where('user_id',$id)->where('status',0)->get();
           $fine=0;
   @endphp
         @foreach($units as $value)
