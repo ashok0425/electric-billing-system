@@ -29,7 +29,6 @@
     </li>
     @endif
 
-    @if (Auth::guard('admin')->user()->type=='admin'||Auth::guard('admin')->user()->type=='franchise')
     <li class="nav-item  @if (Request()->segment(2)=='meter') active @endif
     ">
         <a class="nav-link" href="{{route('admin.meter.index')}}">
@@ -44,6 +43,7 @@
         <span>Meter Reading</span></a>
     </li>
 
+    @if (Auth::guard('admin')->user()->type=='admin'||Auth::guard('admin')->user()->type=='franchise')
  
     @if (Auth::guard('admin')->user()->type=='admin')
     <li class="nav-item  @if (Request()->segment(2)=='franchises')   active @endif    ">

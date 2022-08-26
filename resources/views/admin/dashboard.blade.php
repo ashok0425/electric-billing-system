@@ -66,6 +66,32 @@
 </a>
 
 
+<a class="col-md-3" href="{{route('admin.consume_units.index',['paid'=>2])}}">
+    @php
+        $month=DB::table('consume_units')->where('status',1)->sum('price');
+    @endphp
+  @php
+          $fine=0;
+  @endphp
+        @foreach($units as $value)
+         @php
+              $fine+=__fine($value->created_at,today(),$value->price);
+          $price+=$value->price;
+         @endphp
+  @endforeach
+ <div class="card shadow-sm" style="border: 1.5px solid #005596">
+   
+    <div class="card-body">
+        <strong class="m-0 font-weight-bold text-primary pt-2 ">Total Fine</strong>
+
+     <h4 class="font-weignt-bold text-primary mt-2">
+        <i class="fas fa-money-bill"></i> {{$fine}}
+     </h4>
+     
+</div>
+</div>
+</a>
+
 
 <a class="col-md-3" href="{{route('admin.consume_units.index',['paid'=>2])}}">
 

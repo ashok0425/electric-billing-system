@@ -25,7 +25,6 @@ class ConsumeUnitController extends Controller
     public function index(Request $request)
     {
      
-        $units=ConsumeUnit::with('user')->orderBy('created_at','desc')->get();
         if($request->ajax()){
             if(Auth::guard('admin')->user()->type=='franchise'){
 
@@ -39,7 +38,7 @@ class ConsumeUnitController extends Controller
             if (isset($request->paid)&&$request->paid==1) {
                 $units=$units->where('status',1)->get();
             }else if(isset($request->paid)&&$request->paid==2){
-                    $units=$units->where('status',0)->get();
+                    $units=$units->where('amount','!=',0)->where('status',0)->get();
             }else{
                 $units=$units->get();
 
